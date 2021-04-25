@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "364977698845",
+    "project_id": "athlete-s-diary-a0636",
+    "storage_bucket": "athlete-s-diary-a0636.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364977698845:android:e57a7306bb18a5630caef4",
+        "android_client_info": {
+          "package_name": "com.origin.observer.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364977698845-i1ll2po42bv0prkh4s9niv02hup18d1m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.origin.observer.project",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "364977698845-gchfnj7gr0jk3vkl5c1ccl2l6ofnlfhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL_MQEuWyT-7iq0CuUqa_crj4W4yKCs6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364977698845-gchfnj7gr0jk3vkl5c1ccl2l6ofnlfhe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

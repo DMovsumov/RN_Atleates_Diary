@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>364977698845-ji6gl361r4f5l489mct4vjdatc6he3pp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.364977698845-ji6gl361r4f5l489mct4vjdatc6he3pp</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>364977698845-i1ll2po42bv0prkh4s9niv02hup18d1m.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCWTTPMLZYI3PygO-KDIB6mvdNmo_mCMvw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>364977698845</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.origin.observer.project</string>
+	<key>PROJECT_ID</key>
+	<string>athlete-s-diary-a0636</string>
+	<key>STORAGE_BUCKET</key>
+	<string>athlete-s-diary-a0636.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:364977698845:ios:7dc510d6c02f3b0d0caef4</string>
+</dict>
+</plist>
