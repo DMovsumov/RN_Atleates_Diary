@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const useInput = () => {
     const [active, setActive] = useState(false);
-    const [secure, setSecure] = useState(false);
+    const [secure, setSecure] = useState(true);
 
     const handleSecure = () => {
         setSecure(prevState => !prevState);

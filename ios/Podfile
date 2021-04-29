@@ -4,7 +4,6 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '10.0'
 
 target 'RN_Atld' do
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   config = use_native_modules!
 
   use_react_native!(
@@ -16,6 +15,8 @@ target 'RN_Atld' do
   target 'RN_AtldTests' do
     inherit! :complete
     # Pods for testing
+    pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+    pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
   end
 
   # Enables Flipper.

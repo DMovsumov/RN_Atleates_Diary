@@ -31,7 +31,7 @@ const Input = ({
                     defaultValue={value}
                     autoCapitalize="none"
                     onChangeText={text => changeText(text)}
-                    secureTextEntry={secure}
+                    secureTextEntry={isSecure ? secure : false}
                     onFocus={handleActive}
                     onBlur={handleActive}
                 />
