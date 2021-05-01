@@ -2,11 +2,11 @@ import React from 'react';
 import { Wrapper, Texts } from './styled.index';
 import PropTypes from 'prop-types';
 
-const Touches = ({ onPress, title }) => {
+const Touches = ({ onPress, title, style }) => {
     return (
         <>
             <Wrapper onPress={onPress}>
-                <Texts>{title}</Texts>
+                <Texts style={style}>{title}</Texts>
             </Wrapper>
         </>
     );
@@ -19,4 +19,6 @@ Touches.propTypes = {
     onPress: PropTypes.func,
     /** Текст */
     title: PropTypes.string,
+    /** Тип стиля */
+    style: PropTypes.array,
 };

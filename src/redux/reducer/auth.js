@@ -1,9 +1,9 @@
-import {SET_EMAIL, SET_NAME, SET_PASSWORD} from '../action/auth';
+import { SET_EMAIL, SET_NAME, SET_PASSWORD } from '../action/auth';
 
 const initialState = {
     email: '',
     password: '',
-    name: ''
+    name: '',
 };
 
 const auth = (state = initialState, action) => {

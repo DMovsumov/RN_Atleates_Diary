@@ -4,16 +4,24 @@ import useRegister from './hooks/useRegister';
 import { Container } from './styled.index';
 import Input from '../../components/Inputs';
 import Button from '../../components/Button';
+import Touches from '../../components/Toches';
 
-const Register = () => {
+const Register = ({ navigation }) => {
     const {
         texts,
         handleChangeEmail,
         handleChangePass,
         handleChangeName,
+        goBack,
         onSubmit,
-    } = useRegister();
-    const { allSignUp, loginEmail, loginPassword, allSignUpName } = texts;
+    } = useRegister(navigation);
+    const {
+        allSignUp,
+        loginEmail,
+        loginPassword,
+        allSignUpName,
+        allSignUpBack,
+    } = texts;
 
     return (
         <AuthLayout>
@@ -34,6 +42,7 @@ const Register = () => {
                     style={{ marginBottom: 15 }}
                     changeText={handleChangePass}
                 />
+                <Touches title={allSignUpBack} onPress={goBack} />
                 <Button title={allSignUp} onPress={onSubmit} />
             </Container>
         </AuthLayout>

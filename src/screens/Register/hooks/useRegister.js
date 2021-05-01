@@ -7,14 +7,15 @@ import {
     setPassword,
 } from '../../../redux/action/auth';
 
-const useRegister = () => {
+const useRegister = navigation => {
     const texts = useTranslates(
         'all.sign.up',
         'login.email',
         'login.password',
         'all.sign.up.name',
+        'all.sign.up.back',
     );
-    const { email, password } = useSelector(({ auth }) => auth);
+    const { email, password, name } = useSelector(({ auth }) => auth);
     const dispatch = useDispatch();
 
     const handleChangeEmail = text => {
@@ -30,16 +31,19 @@ const useRegister = () => {
     };
 
     const onSubmit = async () => {
-        await dispatch(createUserWithEmail(email, password));
+        await dispatch(createUserWithEmail(email, password, name));
     };
 
-    console.log(email, password);
+    const goBack = () => {
+        navigation.push('Login');
+    };
 
     return {
         texts,
         handleChangeEmail,
         handleChangePass,
         handleChangeName,
+        goBack,
         onSubmit,
     };
 };

@@ -1,14 +1,22 @@
 import React from 'react';
 import AuthLayout from '../../layouts/AuthLayout';
-import { Container } from './styled.index';
+import { Container, TextsBlock, Texts, TouchSignUp } from './styled.index';
 import Input from '../../components/Inputs';
 import Touches from '../../components/Toches';
 import useLogin from './hooks/useLogin';
 import Button from '../../components/Button';
+import GoogleButton from './components/GoogleButton';
 
-const Login = () => {
-    const { texts } = useLogin();
-    const { loginEmail, loginPassword, loginForgotPassword, allSignIn } = texts;
+const Login = ({ navigation }) => {
+    const { texts, goRegister } = useLogin(navigation);
+    const {
+        loginEmail,
+        loginPassword,
+        loginForgotPassword,
+        allSignIn,
+        loginRegisterTitle,
+        allSignUp,
+    } = texts;
 
     return (
         <AuthLayout>
@@ -21,6 +29,11 @@ const Login = () => {
                 />
                 <Touches title={loginForgotPassword} />
                 <Button title={allSignIn} />
+                <GoogleButton />
+                <TextsBlock>
+                    <Texts>{loginRegisterTitle}</Texts>
+                    <TouchSignUp title={allSignUp} onPress={goRegister} />
+                </TextsBlock>
             </Container>
         </AuthLayout>
     );
