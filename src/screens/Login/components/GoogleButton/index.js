@@ -1,10 +1,13 @@
 import React from 'react';
 import { Wrapper, Texts, GoogleBtn } from './styled.index';
 import Google from '../../../../assets/Google';
+import useGoogleButton from './hooks/useGoogleButton';
 
 const GoogleButton = () => {
+    const { googlePressHandle } = useGoogleButton();
+
     return (
-        <Wrapper>
+        <Wrapper onPress={googlePressHandle}>
             <GoogleBtn>
                 <Google />
             </GoogleBtn>
