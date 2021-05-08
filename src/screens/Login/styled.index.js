@@ -12,6 +12,7 @@ export const Container = styled.View`
 export const TextsBlock = styled.View`
     flex-direction: row;
     margin-top: 15px;
+    justify-content: center;
 `;
 
 export const Texts = styled.Text`
