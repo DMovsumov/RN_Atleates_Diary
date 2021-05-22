@@ -11,12 +11,12 @@ const useLogin = navigation => {
     );
 
     const goRegister = () => {
-        navigation.push('Register');
+        navigation.push('Registration');
     };
 
     return {
         texts,
-        goRegister
+        goRegister,
     };
 };
 

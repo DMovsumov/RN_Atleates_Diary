@@ -13,4 +13,16 @@ export const vocabulary = {
         en: 'Haven’t got an account yet?',
         ru: 'Нет аккаута?',
     },
+    'auth.error.email.used': {
+        en: 'An account with such an email already exists',
+        ru: 'Аккаут с такой почтой уже существует',
+    },
+    'auth.error.weak.password': {
+        en: 'The given password is invalid',
+        ru: 'Слабый пароль',
+    },
+    'auth.error.invalid.email': {
+        en: 'The email address is badly formatted',
+        ru: 'Email введен неверно',
+    },
 };

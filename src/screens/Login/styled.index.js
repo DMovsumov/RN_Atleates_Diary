@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import Touches from '../../components/Toches';
+import Touches from '../../components/Touches';
 
 export const Container = styled.View`
     width: 100%;
@@ -18,7 +18,7 @@ export const TextsBlock = styled.View`
 export const Texts = styled.Text`
     font-size: 18px;
     line-height: 27px;
-    color: #3f444e;
+    color: #aab2ba;
     margin-right: 4px;
 `;
 

@@ -1,11 +1,10 @@
 import React from 'react';
-import AuthLayout from '../../layouts/AuthLayout';
 import { Container, TextsBlock, Texts, TouchSignUp } from './styled.index';
-import Input from '../../components/Inputs';
-import Touches from '../../components/Toches';
+import AuthLayout from '../../layouts/AuthLayout';
+import Input from '../../components/Input';
 import useLogin from './hooks/useLogin';
+import Touches from '../../components/Touches';
 import Button from '../../components/Button';
-import GoogleButton from './components/GoogleButton';
 
 const Login = ({ navigation }) => {
     const { texts, goRegister } = useLogin(navigation);
@@ -29,7 +28,6 @@ const Login = ({ navigation }) => {
                 />
                 <Touches title={loginForgotPassword} />
                 <Button title={allSignIn} />
-                <GoogleButton />
                 <TextsBlock>
                     <Texts>{loginRegisterTitle}</Texts>
                     <TouchSignUp title={allSignUp} onPress={goRegister} />

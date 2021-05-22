@@ -1,9 +1,10 @@
-import { SET_EMAIL, SET_NAME, SET_PASSWORD } from '../action/auth';
+import { SET_EMAIL, SET_NAME, SET_PASSWORD, SET_ERROR } from '../actions/auth';
 
 const initialState = {
     email: '',
     password: '',
     name: '',
+    error: '',
 };
 
 const auth = (state = initialState, action) => {
@@ -22,6 +23,11 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 name: action.payload,
+            };
+        case SET_ERROR:
+            return {
+                ...state,
+                error: action.payload,
             };
         default:
             return state;

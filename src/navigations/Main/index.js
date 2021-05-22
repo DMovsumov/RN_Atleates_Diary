@@ -3,9 +3,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Tab from '../Tab';
 import Login from '../../screens/Login';
-import Register from '../../screens/Register';
+import Registration from '../../screens/Registration';
 
 const Stack = createStackNavigator();
 
@@ -21,8 +20,8 @@ const Main = () => {
                         options={{ headerShown: false }}
                     />
                     <Stack.Screen
-                        name={'Register'}
-                        component={Register}
+                        name={'Registration'}
+                        component={Registration}
                         options={{ headerShown: false }}
                     />
                 </Stack.Navigator>

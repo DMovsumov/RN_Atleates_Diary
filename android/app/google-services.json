@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "364977698845",
+    "firebase_url": "https://athlete-s-diary-a0636-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "athlete-s-diary-a0636",
     "storage_bucket": "athlete-s-diary-a0636.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:364977698845:android:e57a7306bb18a5630caef4",
+        "mobilesdk_app_id": "1:364977698845:android:003c22420acd51830caef4",
         "android_client_info": {
           "package_name": "com.origin.observer.project"
         }
@@ -37,6 +38,13 @@
             {
               "client_id": "364977698845-gchfnj7gr0jk3vkl5c1ccl2l6ofnlfhe.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "364977698845-ji6gl361r4f5l489mct4vjdatc6he3pp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.origin.observer.project"
+              }
             }
           ]
         }

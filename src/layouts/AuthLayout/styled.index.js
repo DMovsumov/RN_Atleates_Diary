@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native';
 
 const SaveArea = styled(SafeAreaView)`
     width: 100%;

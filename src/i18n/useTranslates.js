@@ -9,7 +9,7 @@ const useTranslates = (...ids) => {
             .replace(/-(.)/g, (match, group1) => group1.toUpperCase());
 
     return ids.reduce((acc, id) => {
-        acc[camelCase(id)] = vocabulary[id]['en'];
+        acc[camelCase(id)] = vocabulary[id]['en']; //TODO: брать из стора язык
         return acc;
     }, {});
 };
