@@ -26,3 +26,11 @@ export const Texts = styled.Text`
 export const TouchSignUp = styled(Touches)`
     font-size: 18px;
 `;
+
+export const ErrorText = styled.Text`
+    width: 100%;
+    color: #e15454;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0 20px 0;
+`;

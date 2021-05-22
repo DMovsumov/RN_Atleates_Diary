@@ -1,75 +1,63 @@
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import {getProfile} from './profile';
 
 export const CREATE_NEW_USER_WITH_EMAIL = 'CREATE_NEW_USER_WITH_EMAIL';
-export const createUserWithEmail =
-    (email, password, name) => async dispatch => {
-        try {
-            const {
-                user: { uid, emailVerified, metadata },
-            } = await auth().createUserWithEmailAndPassword(email, password);
+export const createUserWithEmail = (email, password, name) => async dispatch => {
+    try {
+        const {
+            user: { uid, emailVerified, metadata },
+        } = await auth().createUserWithEmailAndPassword(email, password);
 
-            await console.log(uid);
+        await console.log(uid);
 
-            const profile = await database()
-                .ref(`/Users/${uid}`)
-                .set({
-                    profile: {
-                        uid: uid,
-                        metadata: metadata,
-                        auth: 'email/pass',
-                        userName: name,
-                        email: email,
-                        role: 'user',
-                        firstName: '',
-                        lastName: '',
-                        units: {
-                            weight: 'Kg',
-                            height: 'Cm',
-                        },
+        await database()
+            .ref(`/Users/${uid}`)
+            .set({
+                profile: {
+                    uid: uid,
+                    metadata: metadata,
+                    auth: 'email/pass',
+                    userName: name,
+                    email: email,
+                    role: 'user',
+                    firstName: '',
+                    lastName: '',
+                    units: {
+                        weight: 'Kg',
+                        height: 'Cm',
                     },
-                });
+                },
+            });
 
-            await console.log('success', profile);
-
-            if (!emailVerified) {
-                await auth().currentUser.sendEmailVerification();
-            }
-        } catch (e) {
-            console.log(e.code);
-            console.log(e.message);
-            dispatch(setError(e.code));
+        if (!emailVerified) {
+            await auth().currentUser.sendEmailVerification();
         }
-    };
+    } catch (e) {
+        dispatch(setErrors(e.code));
+    }
+};
+
+export const LOGIN_USER_WITH_EMAIL = 'LOGIN_USER_WITH_EMAIL';
+export const loginUserWithEmail = (email, password) => async dispatch => {
+    try {
+        const {
+            user: { email, uid },
+        } = await auth().signInWithEmailAndPassword(email, password);
+
+        // const profile = await database().ref(`/Users/${uid}`).once('value');
+        await console.log(uid)
+        await dispatch(getProfile(uid));
+    } catch (e) {
+        console.log(e.code);
+        dispatch(setErrors(e.code));
+    }
+};
 
 export const SET_ERROR = 'SET_ERROR';
-export const setError = error => dispatch => {
+export const setErrors = error => dispatch => {
     dispatch({
         type: SET_ERROR,
         payload: error,
-    });
-};
-
-export const SET_EMAIL = 'SET_EMAIL';
-export const setEmail = email => dispatch => {
-    dispatch({
-        type: SET_EMAIL,
-        payload: email,
-    });
-};
-
-export const SET_PASSWORD = 'SET_PASSWORD';
-export const setPassword = password => dispatch => {
-    dispatch({
-        type: SET_PASSWORD,
-        payload: password,
-    });
-};
-
-export const SET_NAME = 'SET_NAME';
-export const setName = name => dispatch => {
-    dispatch({
-        type: SET_NAME,
-        payload: name,
     });
 };

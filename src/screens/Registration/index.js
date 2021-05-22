@@ -1,21 +1,14 @@
 import React from 'react';
 import AuthLayout from '../../layouts/AuthLayout';
 import useRegistration from './hooks/useRegistration';
-import { Container, ErrorText } from './styled.index';
+import { Container } from './styled.index';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Touches from '../../components/Touches';
+import { REGEXP_EMAIL_LOGIN, REGEXP_PASSWORD } from '../../configs/global';
 
 const Registration = ({ navigation }) => {
-    const {
-        texts,
-        errorMessage,
-        handleChangeEmail,
-        handleChangePass,
-        handleChangeName,
-        goBack,
-        onSubmit,
-    } = useRegistration(navigation);
+    const { texts, control, handleSubmit, errors, enabled, goBack, onSubmit } = useRegistration(navigation);
 
     const {
         allSignUp,
@@ -23,32 +16,68 @@ const Registration = ({ navigation }) => {
         loginPassword,
         allSignUpName,
         allSignUpBack,
+        authRegisterNameErrorMinlenght,
+        authRegisterNameErrorMaxlenght,
+        authErrorInvalidEmail,
+        authErrorWeakPassword,
     } = texts;
 
     return (
         <AuthLayout>
             <Container>
                 <Input
-                    label={allSignUpName}
+                    name="name"
+                    label={errors.name?.message || allSignUpName}
+                    control={control}
+                    rules={{
+                        required: true,
+                        minLength: {
+                            value: 2,
+                            message: authRegisterNameErrorMinlenght,
+                        },
+                        maxLength: {
+                            value: 32,
+                            message: authRegisterNameErrorMaxlenght,
+                        },
+                    }}
                     style={{ marginBottom: 15 }}
-                    changeText={handleChangeName}
+                    error={errors.name?.message}
                 />
                 <Input
-                    label={loginEmail}
+                    name="email"
+                    label={errors.email?.message || loginEmail}
+                    control={control}
+                    rules={{
+                        required: true,
+                        pattern: {
+                            value: REGEXP_EMAIL_LOGIN,
+                            message: authErrorInvalidEmail,
+                        },
+                    }}
                     style={{ marginBottom: 15 }}
-                    changeText={handleChangeEmail}
-                    error={errorMessage && errorMessage.type === 'email'}
+                    error={errors.email?.message}
                 />
                 <Input
-                    label={loginPassword}
+                    name="password"
+                    label={errors.password?.message || loginPassword}
+                    control={control}
+                    rules={{
+                        required: true,
+                        pattern: {
+                            value: REGEXP_PASSWORD,
+                            message: '',
+                        },
+                        minLength: {
+                            value: 8,
+                            message: authErrorWeakPassword,
+                        },
+                    }}
+                    style={{ marginBottom: 15 }}
+                    error={errors.password?.message}
                     isSecure
-                    style={{ marginBottom: 15 }}
-                    changeText={handleChangePass}
-                    error={errorMessage && errorMessage.type === 'password'}
                 />
-                {errorMessage && <ErrorText>{errorMessage.texts}</ErrorText>}
                 <Touches title={allSignUpBack} onPress={goBack} />
-                <Button title={allSignUp} onPress={onSubmit} />
+                <Button title={allSignUp} disabled={!enabled} onPress={handleSubmit(onSubmit)} />
             </Container>
         </AuthLayout>
     );

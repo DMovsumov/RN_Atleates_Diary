@@ -2,10 +2,10 @@ import React from 'react';
 import { Wrapper, Linear, Titles } from './styled.index';
 import PropTypes from 'prop-types';
 
-const Button = ({ title, onPress }) => {
+const Button = ({ title, onPress, disabled }) => {
     return (
-        <Wrapper onPress={onPress}>
-            <Linear colors={['#7454FE', '#591ADE']}>
+        <Wrapper onPress={onPress} disabled={disabled} style={({ pressed }) => [{ opacity: pressed ? 0.4 : 1 }]}>
+            <Linear colors={['#7454fe', '#591ade']} style={{ opacity: disabled ? 0.7 : 1 }}>
                 <Titles>{title}</Titles>
             </Linear>
         </Wrapper>

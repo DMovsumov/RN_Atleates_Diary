@@ -1,13 +1,8 @@
 import useTranslates from '../../../i18n/useTranslates';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import {
-    createUserWithEmail,
-    setEmail,
-    setError,
-    setName,
-    setPassword,
-} from '../../../redux/actions/auth';
+import { createUserWithEmail, setErrors } from '../../../redux/actions/auth';
+import { useForm } from 'react-hook-form';
 
 const useRegistration = navigation => {
     const texts = useTranslates(
@@ -19,29 +14,26 @@ const useRegistration = navigation => {
         'auth.error.email.used',
         'auth.error.weak.password',
         'auth.error.invalid.email',
+        'auth.register.name.error.minlenght',
+        'auth.register.name.error.maxlenght',
     );
-    const { email, password, name, error } = useSelector(({ auth }) => auth);
-    const [valid, setValid] = useState(false);
-    const [errorMessage, setErrorMessage] = useState();
+    const { error } = useSelector(({ auth }) => auth);
+    const [enabled, setEnable] = useState(false);
     const dispatch = useDispatch();
     const { authErrorEmailUsed, authErrorWeakPassword, authErrorInvalidEmail } = texts;
-
-    const handleChangeEmail = text => {
-        dispatch(setEmail(text));
-        dispatch(setError(''));
-    };
-
-    const handleChangePass = text => {
-        dispatch(setPassword(text));
-        dispatch(setError(''));
-    };
-
-    const handleChangeName = text => {
-        dispatch(setName(text));
-        dispatch(setError(''));
-    };
+    const {
+        control,
+        handleSubmit,
+        setValue,
+        formState: { errors },
+        setError,
+        watch,
+    } = useForm();
+    const fields = ['name', 'email', 'password'];
+    const [userName, email, password] = watch(fields);
 
     const onSubmit = async () => {
+        await dispatch(setErrors(''));
         await dispatch(createUserWithEmail(email, password, name));
     };
 
@@ -49,33 +41,32 @@ const useRegistration = navigation => {
         navigation.push('Login');
     };
 
-    const errorMessages = () => {
+    useEffect(() => {
         switch (error) {
             case 'auth/email-already-in-use':
-                return { type: 'email', texts: authErrorEmailUsed };
+                return setError('email', { message: authErrorEmailUsed });
             case 'auth/weak-password':
-                return { type: 'password', texts: authErrorWeakPassword };
+                return setError('password', { message: authErrorWeakPassword });
             case 'auth/invalid-email':
-                return { type: 'email', texts: authErrorInvalidEmail };
+                return setError('email', { message: authErrorInvalidEmail });
         }
-    };
+    }, [authErrorEmailUsed, authErrorInvalidEmail, authErrorWeakPassword, error, setError]);
 
     useEffect(() => {
-        if (error !== '') {
-            setValid(false);
-            setErrorMessage(errorMessages());
+        if (userName && email && password) {
+            setEnable(userName && email && password);
         } else {
-            setErrorMessage(undefined);
+            setEnable(false);
         }
-    }, [error]);
+    }, [email, password, userName]);
 
     return {
         texts,
-        valid,
-        errorMessage,
-        handleChangeEmail,
-        handleChangePass,
-        handleChangeName,
+        enabled,
+        errors,
+        control,
+        setValue,
+        handleSubmit,
         goBack,
         onSubmit,
     };

@@ -10,16 +10,20 @@ import {
 import useInput from './hooks/useInput';
 import CloseEye from '../../assets/close-eye';
 import Eye from '../../assets/eye';
+import { Controller } from 'react-hook-form';
+import {err} from 'react-native-svg/lib/typescript/xml';
 
 const Input = ({
     type,
     label,
     keyboardType,
-    value,
-    changeText,
     isSecure,
     style,
     error,
+    control,
+    defaultValue,
+    name,
+    rules,
 }) => {
     const { secure, active, handleSecure, handleActive } = useInput();
 
@@ -27,17 +31,25 @@ const Input = ({
         <Container style={style}>
             {label && <Label error={error}>{label}</Label>}
             <InputWrapper>
-                <Inputs
-                    active={active}
-                    error={error}
-                    type={type}
-                    keyboardType={keyboardType}
-                    defaultValue={value}
-                    autoCapitalize="none"
-                    onChangeText={text => changeText(text)}
-                    secureTextEntry={isSecure ? secure : false}
-                    onFocus={handleActive}
-                    onBlur={handleActive}
+                <Controller
+                    control={control}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <Inputs
+                            active={active}
+                            error={error}
+                            type={type}
+                            keyboardType={keyboardType}
+                            autoCapitalize="none"
+                            onChangeText={text => onChange(text)}
+                            value={value}
+                            defaultValue={defaultValue || ''}
+                            secureTextEntry={isSecure ? secure : false}
+                            onFocus={handleActive}
+                            onBlur={handleActive}
+                        />
+                    )}
+                    name={name}
+                    rules={{ ...rules }}
                 />
                 {isSecure && (
                     <IsSecure onPress={handleSecure}>
@@ -58,17 +70,16 @@ Input.propTypes = {
     label: PropTypes.string,
     /** Тип клавиатуры */
     keyboardType: PropTypes.string,
-    /** Value */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** Function */
     changeText: PropTypes.func,
     /** Скрывать текст или нет */
     isSecure: PropTypes.bool,
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
 Input.defaultProps = {
     type: '',
     label: '',
     keyboardType: 'default',
-    value: null,
+    defaultValue: '',
 };
