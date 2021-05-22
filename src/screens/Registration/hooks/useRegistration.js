@@ -24,11 +24,7 @@ const useRegistration = navigation => {
     const [valid, setValid] = useState(false);
     const [errorMessage, setErrorMessage] = useState();
     const dispatch = useDispatch();
-    const {
-        authErrorEmailUsed,
-        authErrorWeakPassword,
-        authErrorInvalidEmail,
-    } = texts;
+    const { authErrorEmailUsed, authErrorWeakPassword, authErrorInvalidEmail } = texts;
 
     const handleChangeEmail = text => {
         dispatch(setEmail(text));
