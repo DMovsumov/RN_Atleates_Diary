@@ -1,8 +1,10 @@
 import useTranslates from '../../../i18n/useTranslates';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { createUserWithEmail, setErrors } from '../../../redux/actions/auth';
+import { createUser, createUserWithEmail, setErrors } from '../../../redux/actions/auth';
 import { useForm } from 'react-hook-form';
+import auth from '@react-native-firebase/auth';
+import { clearErrors } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 const useRegistration = navigation => {
     const texts = useTranslates(
@@ -17,8 +19,8 @@ const useRegistration = navigation => {
         'auth.register.name.error.minlenght',
         'auth.register.name.error.maxlenght',
     );
-    const { error } = useSelector(({ auth }) => auth);
     const [enabled, setEnable] = useState(false);
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const { authErrorEmailUsed, authErrorWeakPassword, authErrorInvalidEmail } = texts;
     const {
@@ -30,11 +32,34 @@ const useRegistration = navigation => {
         watch,
     } = useForm();
     const fields = ['name', 'email', 'password'];
-    const [userName, email, password] = watch(fields);
+    const [name, email, password] = watch(fields);
 
     const onSubmit = async () => {
-        await dispatch(setErrors(''));
-        await dispatch(createUserWithEmail(email, password, name));
+        await setLoading(true);
+
+        try {
+            const {
+                user: { uid, emailVerified, metadata },
+            } = await auth().createUserWithEmailAndPassword(email, password);
+
+            await dispatch(createUser({ uid, email, name, metadata }));
+
+            if (!emailVerified) {
+                await auth().currentUser.sendEmailVerification();
+            }
+
+            await setLoading(false);
+        } catch (e) {
+            await setLoading(false);
+            switch (e.code) {
+                case 'auth/email-already-in-use':
+                    return setError('email', { message: authErrorEmailUsed });
+                case 'auth/weak-password':
+                    return setError('password', { message: authErrorWeakPassword });
+                case 'auth/invalid-email':
+                    return setError('email', { message: authErrorInvalidEmail });
+            }
+        }
     };
 
     const goBack = () => {
@@ -42,23 +67,13 @@ const useRegistration = navigation => {
     };
 
     useEffect(() => {
-        switch (error) {
-            case 'auth/email-already-in-use':
-                return setError('email', { message: authErrorEmailUsed });
-            case 'auth/weak-password':
-                return setError('password', { message: authErrorWeakPassword });
-            case 'auth/invalid-email':
-                return setError('email', { message: authErrorInvalidEmail });
-        }
-    }, [authErrorEmailUsed, authErrorInvalidEmail, authErrorWeakPassword, error, setError]);
-
-    useEffect(() => {
-        if (userName && email && password) {
-            setEnable(userName && email && password);
+        if (name && email && password) {
+            setEnable(name && email && password);
         } else {
             setEnable(false);
+            clearErrors();
         }
-    }, [email, password, userName]);
+    }, [email, password, name]);
 
     return {
         texts,
@@ -66,6 +81,7 @@ const useRegistration = navigation => {
         errors,
         control,
         setValue,
+        loading,
         handleSubmit,
         goBack,
         onSubmit,

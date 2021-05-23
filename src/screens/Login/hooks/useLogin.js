@@ -2,7 +2,7 @@ import useTranslates from '../../../i18n/useTranslates';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUserWithEmail, setErrors } from '../../../redux/actions/auth';
+import auth from '@react-native-firebase/auth';
 
 const useLogin = navigation => {
     const texts = useTranslates(
@@ -17,9 +17,8 @@ const useLogin = navigation => {
         'auth.login.error',
         'auth.login.error.user.disable',
         'auth.login.error.user.notfound',
-        'all.unknown.error',
     );
-    const { authLoginError, authLoginErrorUserDisable, authLoginErrorUserNotfound, allUnknownError } = texts;
+    const { authLoginError, authLoginErrorUserDisable, authLoginErrorUserNotfound } = texts;
     const dispatch = useDispatch();
     const {
         control,
@@ -33,38 +32,45 @@ const useLogin = navigation => {
     const fields = ['email', 'password'];
     const [email, password] = watch(fields);
     const [enabled, setEnable] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const goRegister = () => {
         navigation.push('Registration');
     };
 
+    const goForgotPassword = () => {
+        navigation.push('Forgot Password');
+    };
+
     const onSubmit = async () => {
         await clearErrors();
-        await dispatch(setErrors(''));
-        await dispatch(loginUserWithEmail());
+        await setLoading(true);
+
+        try {
+            await auth().signInWithEmailAndPassword(email, password);
+
+            await setLoading(false);
+        } catch (e) {
+            switch (e.code) {
+                case 'auth/wrong-password':
+                    return setError('errors', { message: authLoginError });
+                case 'auth/invalid-email':
+                    return setError('errors', { message: authLoginError });
+                case 'auth/user-disabled':
+                    return setError('errors', { message: authLoginErrorUserDisable });
+                case 'auth/user-not-found':
+                    return setError('errors', { message: authLoginErrorUserNotfound });
+            }
+        }
     };
 
     useEffect(() => {
-        dispatch(setErrors(''));
         if (email && password) {
             setEnable(email && password);
         } else {
             setEnable(false);
         }
-    }, [email, password]);
-
-    useEffect(() => {
-        switch (error) {
-            case 'auth/wrong-password':
-                return setError('errors', { message: authLoginError });
-            case 'auth/invalid-email':
-                return setError('errors', { message: authLoginError });
-            case 'auth/user-disabled':
-                return setError('errors', { message: authLoginErrorUserDisable });
-            case 'auth/user-not-found':
-                return setError('errors', { message: authLoginErrorUserNotfound });
-        }
-    }, [authLoginError, authLoginErrorUserDisable, authLoginErrorUserNotfound, error, setError]);
+    }, [dispatch, email, password]);
 
     return {
         texts,
@@ -72,8 +78,10 @@ const useLogin = navigation => {
         handleSubmit,
         errors,
         enabled,
+        loading,
         onSubmit,
         goRegister,
+        goForgotPassword,
     };
 };
 

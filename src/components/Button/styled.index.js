@@ -19,4 +19,5 @@ export const Linear = styled(LinearGradient)`
 export const Titles = styled.Text`
     color: #fefefe;
     font-size: 20px;
+    font-family: TTNorms-Regular;
 `;

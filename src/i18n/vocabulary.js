@@ -49,4 +49,12 @@ export const vocabulary = {
         en: 'Unknown error, try to later',
         ru: 'Неизвестная ошибка попробуйте позже',
     },
+    'auth.reset.password.desc': {
+        en: 'Enter your email, we will send an email to it with a link to reset your password',
+        ru: 'Введите email мы на него пришлем письмо с ссылкой для смены пароля',
+    },
+    'auth.reset.password.finishmessage': {
+        en: 'An email with a link to change your password has been sent to',
+        ru: 'Письмо с сылкой для смены пароля отправлено на',
+    },
 };

@@ -8,7 +8,7 @@ import Touches from '../../components/Touches';
 import { REGEXP_EMAIL_LOGIN, REGEXP_PASSWORD } from '../../configs/global';
 
 const Registration = ({ navigation }) => {
-    const { texts, control, handleSubmit, errors, enabled, goBack, onSubmit } = useRegistration(navigation);
+    const { texts, control, handleSubmit, errors, enabled, loading, goBack, onSubmit } = useRegistration(navigation);
 
     const {
         allSignUp,
@@ -77,7 +77,7 @@ const Registration = ({ navigation }) => {
                     isSecure
                 />
                 <Touches title={allSignUpBack} onPress={goBack} />
-                <Button title={allSignUp} disabled={!enabled} onPress={handleSubmit(onSubmit)} />
+                <Button title={allSignUp} disabled={!enabled} onPress={handleSubmit(onSubmit)} loading={loading} />
             </Container>
         </AuthLayout>
     );

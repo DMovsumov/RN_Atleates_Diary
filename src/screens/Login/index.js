@@ -8,7 +8,7 @@ import Button from '../../components/Button';
 import { REGEXP_EMAIL_LOGIN, REGEXP_PASSWORD } from '../../configs/global';
 
 const Login = ({ navigation }) => {
-    const { texts, control, errors, handleSubmit, onSubmit, enabled, goRegister } = useLogin(navigation);
+    const { texts, control, errors, handleSubmit, onSubmit, enabled, loading, goRegister, goForgotPassword } = useLogin(navigation);
     const {
         loginEmail,
         loginPassword,
@@ -57,8 +57,8 @@ const Login = ({ navigation }) => {
                     isSecure
                 />
                 {errors.errors?.message && <ErrorText>{errors.errors.message}</ErrorText>}
-                <Touches title={loginForgotPassword} />
-                <Button title={allSignIn} disabled={!enabled} onPress={handleSubmit(onSubmit)} />
+                <Touches title={loginForgotPassword} style={{ fontSize: 18 }} onPress={goForgotPassword} />
+                <Button title={allSignIn} disabled={!enabled} onPress={handleSubmit(onSubmit)} loading={loading} />
                 <TextsBlock>
                     <Texts>{loginRegisterTitle}</Texts>
                     <TouchSignUp title={allSignUp} onPress={goRegister} />

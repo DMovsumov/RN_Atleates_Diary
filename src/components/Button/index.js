@@ -1,12 +1,13 @@
 import React from 'react';
 import { Wrapper, Linear, Titles } from './styled.index';
 import PropTypes from 'prop-types';
+import BtnLoader from './components/loader';
 
-const Button = ({ title, onPress, disabled }) => {
+const Button = ({ title, onPress, disabled, loading }) => {
     return (
         <Wrapper onPress={onPress} disabled={disabled} style={({ pressed }) => [{ opacity: pressed ? 0.4 : 1 }]}>
             <Linear colors={['#7454fe', '#591ade']} style={{ opacity: disabled ? 0.7 : 1 }}>
-                <Titles>{title}</Titles>
+                {loading ? <BtnLoader /> : <Titles>{title}</Titles>}
             </Linear>
         </Wrapper>
     );

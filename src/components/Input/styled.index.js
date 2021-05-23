@@ -36,6 +36,7 @@ export const Inputs = styled.TextInput`
 export const Label = styled.Text`
     color: #fff;
     font-size: 16px;
+    font-family: TTNorms-Regular;
 
     ${({ error }) =>
         error &&
