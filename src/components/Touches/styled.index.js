@@ -7,4 +7,5 @@ export const Wrapper = styled.TouchableOpacity`
 
 export const Texts = styled.Text`
     color: #176ced;
+    font-family: TTNorms-Regular;
 `;

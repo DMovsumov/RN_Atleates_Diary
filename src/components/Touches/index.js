@@ -20,5 +20,5 @@ Touches.propTypes = {
     /** Текст */
     title: PropTypes.string,
     /** Тип стиля */
-    style: PropTypes.array,
+    style: PropTypes.any,
 };

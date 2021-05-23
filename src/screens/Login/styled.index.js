@@ -21,6 +21,7 @@ export const Texts = styled.Text`
     line-height: 27px;
     color: #aab2ba;
     margin-right: 4px;
+    font-family: TTNorms-Regular;
 `;
 
 export const TouchSignUp = styled(Touches)`

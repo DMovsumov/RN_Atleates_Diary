@@ -5,9 +5,7 @@ import SaveArea from './styled.index';
 const AuthLayout = ({ children }) => {
     return (
         <SaveArea>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                {children}
-            </ScrollView>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>{children}</ScrollView>
         </SaveArea>
     );
 };
