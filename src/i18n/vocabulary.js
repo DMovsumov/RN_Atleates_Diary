@@ -57,4 +57,24 @@ export const vocabulary = {
         en: 'An email with a link to change your password has been sent to',
         ru: 'Письмо с сылкой для смены пароля отправлено на',
     },
+    'profile.myAccount.title': {
+        en: 'My account',
+        ru: 'Мой профиль',
+    },
+    'profile.settings.title': {
+        en: 'Setting',
+        ru: 'Настройки',
+    },
+    'profile.statistics.title': {
+        en: 'Statistics',
+        ru: 'Статистика',
+    },
+    'profile.subscriptions.title': {
+        en: 'Subscriptions',
+        ru: 'Подписка',
+    },
+    'profile.question.title': {
+        en: 'FAQ and Support',
+        ru: 'FAQ и поддержка',
+    },
 };
