@@ -22,9 +22,17 @@ const dataService = store => next => async action => {
                     try {
                         if (params.typeDataBase === 'push') {
                             await urlRef.push(data);
+                        }
+                        if (params.typeDataBase === 'update') {
+                            await urlRef.update(data);
                         } else {
                             await urlRef.set(data);
                         }
+
+                        await next({
+                            data: data,
+                            type: types.success || '',
+                        });
                     } catch (e) {
                         await next({
                             errors,

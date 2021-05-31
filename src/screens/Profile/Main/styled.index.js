@@ -5,7 +5,7 @@ export const Wrapper = styled.View``;
 export const ProfileImage = styled.ImageBackground`
     width: 100%;
     height: 470px;
-    justify-content: flex-end;
+    justify-content: space-between;
 `;
 
 export const ProfileName = styled.Text`

@@ -41,6 +41,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Location is required to run the app</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Location is required to run the app</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>

@@ -9,19 +9,24 @@ export const SaveArea = styled(SafeAreaView)`
 `;
 
 export const Header = styled.View`
-    height: 30px;
+    height: 40px;
     width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    border-bottom-width: 1px;
+    border-color: rgba(141, 153, 178, 0.28);
 `;
 
 export const TextScreen = styled.Text`
     color: #fefefe;
     font-size: 20px;
+    width: 100%;
+    text-align: center;
     font-family: TTNorms-Bold;
 `;
 
 export const WrapArrow = styled.TouchableOpacity`
-    margin-right: 33%;
+    margin-right: auto;
+    z-index: 10;
 `;

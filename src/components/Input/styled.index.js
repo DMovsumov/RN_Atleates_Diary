@@ -17,6 +17,7 @@ export const Inputs = styled.TextInput`
     width: 100%;
     height: 100%;
     color: #fff;
+    font-size: 16px;
     border-bottom-color: #c4c4c4;
     border-bottom-width: 2px;
 
@@ -29,19 +30,25 @@ export const Inputs = styled.TextInput`
     ${({ error }) =>
         error &&
         css`
-            border-bottom-color: #e15454;
+            border-bottom-color: #f34545;
         `}
 `;
 
 export const Label = styled.Text`
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     font-family: TTNorms-Regular;
+
+    ${({ active }) =>
+        active &&
+        css`
+            color: #176ced;
+        `}
 
     ${({ error }) =>
         error &&
         css`
-            color: #e15454;
+            color: #f34545;
         `}
 `;
 

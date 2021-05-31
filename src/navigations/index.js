@@ -24,19 +24,19 @@ const Main = () => {
             );
         }
 
-        if (initializing && !user) {
+        if (!initializing && user) {
             return (
                 <>
-                    <Stack.Screen name={'Login'} component={Login} options={{ headerShown: false }} />
-                    <Stack.Screen name={'Registration'} component={Registration} options={{ headerShown: false }} />
-                    <Stack.Screen name={'Forgot Password'} component={ForgotPassword} options={{ headerShown: false }} />
+                    <Stack.Screen name={'TabNavigator'} component={TabNavigator} options={{ headerShown: false }} />
                 </>
             );
         }
 
         return (
             <>
-                <Stack.Screen name={'TabNavigator'} component={TabNavigator} options={{ headerShown: false }} />
+                <Stack.Screen name={'Login'} component={Login} options={{ headerShown: false }} />
+                <Stack.Screen name={'Registration'} component={Registration} options={{ headerShown: false }} />
+                <Stack.Screen name={'Forgot Password'} component={ForgotPassword} options={{ headerShown: false }} />
             </>
         );
     };

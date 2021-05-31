@@ -7,8 +7,12 @@ export const vocabulary = {
     },
     'all.sign.in': { en: 'Sign In', ru: 'Войти' },
     'all.sign.up': { en: 'Sign Up', ru: 'Зарегистрироваться' },
-    'all.sign.up.name': { en: 'Name', ru: 'Имя' },
+    'all.sign.up.name': { en: 'User name', ru: 'Имя пользователя' },
     'all.sign.up.back': { en: 'Go Back', ru: 'Назад' },
+    'all.submit.btn.title': {
+        en: 'Submit',
+        ru: 'Подтвердить',
+    },
     'login.register.title': {
         en: 'Haven’t got an account yet?',
         ru: 'Нет аккаута?',
@@ -77,4 +81,30 @@ export const vocabulary = {
         en: 'FAQ and Support',
         ru: 'FAQ и поддержка',
     },
+    'profile.myAccount.title.general': {
+        en: 'General Info',
+        ru: 'Основная информация',
+    },
+    'profile.myAccount.title.firstName': {
+        en: 'First name',
+        ru: 'Имя',
+    },
+    'profile.myAccount.title.lastName': {
+        en: 'Last name',
+        ru: 'Фамилия',
+    },
+    'profile.myAccount.title.units': {
+        en: 'Units',
+        ru: 'Единицы измерения',
+    },
+    'profile.myAccount.title.changePhoto': {
+        en: 'Change Profile Photo',
+        ru: 'Изменить фото профиля',
+    },
+    'all.units.kg': { en: 'Kg', ru: 'Кг' },
+    'all.units.lbs': { en: 'Lbs', ru: 'Фунты' },
+    'all.units.cm': { en: 'Cm', ru: 'См' },
+    'all.units.ft': { en: 'Ft', ru: 'Футы' },
+    'all.units.weight': { en: 'Weight:', ru: 'Вес:' },
+    'all.units.height': { en: 'Height:', ru: 'Рост:' },
 };

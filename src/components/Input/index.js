@@ -11,29 +11,21 @@ import useInput from './hooks/useInput';
 import CloseEye from '../../assets/close-eye';
 import Eye from '../../assets/eye';
 import { Controller } from 'react-hook-form';
-import {err} from 'react-native-svg/lib/typescript/xml';
 
-const Input = ({
-    type,
-    label,
-    keyboardType,
-    isSecure,
-    style,
-    error,
-    control,
-    defaultValue,
-    name,
-    rules,
-}) => {
+const Input = ({ type, label, keyboardType, isSecure, style, error, control, defaultValue, name, rules }) => {
     const { secure, active, handleSecure, handleActive } = useInput();
 
     return (
         <Container style={style}>
-            {label && <Label error={error}>{label}</Label>}
+            {label && (
+                <Label error={error} active={active}>
+                    {label}
+                </Label>
+            )}
             <InputWrapper>
                 <Controller
                     control={control}
-                    render={({ field: { onChange, onBlur, value } }) => (
+                    render={({ field: { onChange, value } }) => (
                         <Inputs
                             active={active}
                             error={error}

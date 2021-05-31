@@ -63,10 +63,9 @@ export const createUser = ({ uid, email, name, metadata }) => ({
     data: {
         profile: {
             uid: uid,
-            metadata: metadata,
-            auth: 'email/pass',
-            userName: name,
+            displayName: name,
             email: email,
+            metadata,
             role: 'user',
             firstName: '',
             lastName: '',

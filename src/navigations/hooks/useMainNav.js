@@ -1,15 +1,19 @@
 import auth from '@react-native-firebase/auth';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getProfile } from '../../redux/actions/profile';
 
 const useMainNav = () => {
+    const dispatch = useDispatch();
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
 
-    const onAuthStateChanged = user => {
+    const onAuthStateChanged = async user => {
         setUser(user);
-        if (initializing) {
-            setInitializing(false);
+        if (user?.uid) {
+            await dispatch(getProfile(user.uid));
         }
+        return setInitializing(false);
     };
 
     useEffect(() => {
