@@ -62,8 +62,8 @@ export const vocabulary = {
         ru: 'Письмо с сылкой для смены пароля отправлено на',
     },
     'profile.myAccount.title': {
-        en: 'My account',
-        ru: 'Мой профиль',
+        en: 'My Account',
+        ru: 'Мой Профиль',
     },
     'profile.settings.title': {
         en: 'Setting',
@@ -101,6 +101,9 @@ export const vocabulary = {
         en: 'Change Profile Photo',
         ru: 'Изменить фото профиля',
     },
+    'profile.settings.switchLanguage': { en: 'Switch language', ru: 'Сменить  языка' },
+    'profile.settings.switchThemeDark': { en: 'Switch to dark theme', ru: 'Перейти на темную тему' },
+    'profile.settings.switchThemeLight': { en: 'Switch to light theme', ru: 'Перейти на светлую тему' },
     'all.units.kg': { en: 'Kg', ru: 'Кг' },
     'all.units.lbs': { en: 'Lbs', ru: 'Фунты' },
     'all.units.cm': { en: 'Cm', ru: 'См' },

@@ -10,7 +10,7 @@ import { ButtonWrap } from './styled.index';
 const MyAccount = ({ navigation }) => {
     const {
         profile,
-        texts: { allSubmitBtnTitle },
+        texts: { allSubmitBtnTitle, profileMyaccountTitle },
         control,
         errors,
         units,
@@ -23,7 +23,7 @@ const MyAccount = ({ navigation }) => {
     const { displayName, firstName, lastName } = profile;
 
     return (
-        <MainLayout navigation={navigation} back title="My Account" refresh={refreshProfile}>
+        <MainLayout navigation={navigation} back title={profileMyaccountTitle} refresh={refreshProfile}>
             <ProfileImage />
             <GeneralInfo control={control} errors={errors} profile={{ displayName, firstName, lastName }} />
             <Units units={units} onPress={handleSetUnits} />

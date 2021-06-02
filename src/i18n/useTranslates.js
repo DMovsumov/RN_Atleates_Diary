@@ -1,6 +1,9 @@
 import { vocabulary } from './vocabulary';
+import { useSelector } from 'react-redux';
 
 const useTranslates = (...ids) => {
+    const { lang } = useSelector(({ global }) => global);
+
     const en = 'en';
     const camelCase = input =>
         input
@@ -9,7 +12,7 @@ const useTranslates = (...ids) => {
             .replace(/-(.)/g, (match, group1) => group1.toUpperCase());
 
     return ids.reduce((acc, id) => {
-        acc[camelCase(id)] = vocabulary[id][en]; //TODO: брать из стора язык
+        acc[camelCase(id)] = vocabulary[id][lang]; //TODO: брать из стора язык
         return acc;
     }, {});
 };

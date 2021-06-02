@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, TextsBlock, Texts, TouchSignUp, ErrorText } from './styled.index';
+import { Container, TextsBlock, TextsInfo, TouchSignUp, ErrorText } from './styled.index';
 import AuthLayout from '../../layouts/AuthLayout';
 import Input from '../../components/Input';
 import useLogin from './hooks/useLogin';
@@ -60,7 +60,7 @@ const Login = ({ navigation }) => {
                 <Touches title={loginForgotPassword} style={{ fontSize: 18 }} onPress={goForgotPassword} />
                 <Button title={allSignIn} disabled={!enabled} onPress={handleSubmit(onSubmit)} loading={loading} />
                 <TextsBlock>
-                    <Texts>{loginRegisterTitle}</Texts>
+                    <TextsInfo text={loginRegisterTitle} />
                     <TouchSignUp title={allSignUp} onPress={goRegister} />
                 </TextsBlock>
             </Container>

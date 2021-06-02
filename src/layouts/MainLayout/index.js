@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Header, SaveArea, TextScreen, WrapArrow } from './styled.index';
 import { ScrollView, RefreshControl } from 'react-native';
 import Arrow from '../../assets/arrow';
+import { useSelector } from 'react-redux';
 
 const MainLayout = ({ children, navigation, back, title, refresh }) => {
     const goBack = () => navigation.goBack();
     const [refreshing, setRefreshing] = useState(false);
+    const { theme } = useSelector(({ global }) => global);
 
     const onRefresh = async () => {
         await setRefreshing(true);
@@ -14,7 +16,7 @@ const MainLayout = ({ children, navigation, back, title, refresh }) => {
     };
 
     return (
-        <SaveArea>
+        <SaveArea theme={theme}>
             <ScrollView
                 contentContainerStyle={{ flexGrow: 1 }}
                 refreshControl={
@@ -29,9 +31,9 @@ const MainLayout = ({ children, navigation, back, title, refresh }) => {
                 {back && (
                     <Header>
                         <WrapArrow onPress={goBack}>
-                            <Arrow />
+                            <Arrow color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
                         </WrapArrow>
-                        <TextScreen back={back}>{title}</TextScreen>
+                        <TextScreen theme={theme}>{title}</TextScreen>
                     </Header>
                 )}
                 {children}

@@ -1,6 +1,9 @@
 import auth from '@react-native-firebase/auth';
+import { useSelector } from 'react-redux';
 
 const useMainProfile = navigation => {
+    const { theme } = useSelector(({ global }) => global);
+
     const goTo = name => {
         return navigation.navigate(name);
     };
@@ -12,6 +15,7 @@ const useMainProfile = navigation => {
     return {
         goTo,
         logOut,
+        theme,
     };
 };
 

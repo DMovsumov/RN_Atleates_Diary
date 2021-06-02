@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import Touches from '../../components/Touches';
+import Texts from '../../components/Texts';
 
 export const Container = styled.View`
     width: 100%;
@@ -16,10 +17,9 @@ export const TextsBlock = styled.View`
     justify-content: center;
 `;
 
-export const Texts = styled.Text`
+export const TextsInfo = styled(Texts)`
     font-size: 18px;
     line-height: 27px;
-    color: #aab2ba;
     margin-right: 4px;
     font-family: TTNorms-Regular;
 `;

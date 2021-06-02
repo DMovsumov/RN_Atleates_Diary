@@ -30,6 +30,7 @@ const dataService = store => next => async action => {
                         }
 
                         await next({
+                            callback,
                             data: data,
                             type: types.success || '',
                         });

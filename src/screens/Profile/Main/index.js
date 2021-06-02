@@ -7,14 +7,14 @@ import useMainProfile from './hooks/useMainProfile';
 import LogoutBtn from './components/Logout';
 
 const Main = ({ navigation }) => {
-    const { goTo, logOut } = useMainProfile(navigation);
+    const { goTo, logOut, theme } = useMainProfile(navigation);
 
     return (
         <AuthLayout top={false} bottom={false}>
             <Wrapper>
                 <ProfileImage
                     source={{ uri: 'https://sun1-22.userapi.com/ooi6yEvzBT9lFw9B__3kyNefG8cpt_fjouhH6Q/5bfRUiO4VMc.jpg' }}
-                    imageStyle={styles.image}>
+                    imageStyle={[styles.image, { opacity: theme === 'dark' ? 0.75 : 1 }]}>
                     <LogoutBtn logOut={logOut} />
                     <ProfileName>Denioo</ProfileName>
                 </ProfileImage>
@@ -29,6 +29,5 @@ export default Main;
 const styles = StyleSheet.create({
     image: {
         borderBottomLeftRadius: 50,
-        opacity: 0.75,
     },
 });

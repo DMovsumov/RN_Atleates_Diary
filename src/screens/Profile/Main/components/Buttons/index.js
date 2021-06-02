@@ -3,16 +3,19 @@ import { Block, ButtonPress, ButtonView, Wrapper, TextButton, ButtonInfoBlock } 
 import ItemIcons from '../../../../../components/ItemIcon';
 import useButtons from './hooks/useButtons';
 import ArrowBack from '../../../../../assets/arrowBack';
+import { useSelector } from 'react-redux';
 
 const Item = ({ type, iconName, title, pressHandle }) => {
+    const { theme } = useSelector(({ global }) => global);
+
     return (
-        <ButtonPress onPress={pressHandle} type={type} style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}>
+        <ButtonPress onPress={pressHandle} type={type} style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]} theme={theme}>
             <ButtonView>
                 <ButtonInfoBlock>
                     <ItemIcons iconName={iconName} />
-                    <TextButton>{title}</TextButton>
+                    <TextButton text={title} />
                 </ButtonInfoBlock>
-                <ArrowBack height={24} right />
+                <ArrowBack height={24} right color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
             </ButtonView>
         </ButtonPress>
     );

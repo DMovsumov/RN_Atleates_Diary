@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+import Texts from '../../../../../components/Texts';
 
 export const Wrapper = styled.View`
     margin-top: -100px;
@@ -14,7 +15,7 @@ export const Block = styled.View`
 export const ButtonPress = styled.Pressable`
     width: 90%;
     height: 60px;
-    background-color: #222332;
+    background-color: ${({ theme }) => (theme === 'dark' ? '#222332' : '#fefefe')};
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 
@@ -51,10 +52,9 @@ export const ButtonInfoBlock = styled.View`
     align-items: center;
 `;
 
-export const TextButton = styled.Text`
+export const TextButton = styled(Texts)`
     font-size: 18px;
     font-family: TTNorms-Bold;
     text-align: left;
-    color: #fff;
     margin-left: 10px;
 `;

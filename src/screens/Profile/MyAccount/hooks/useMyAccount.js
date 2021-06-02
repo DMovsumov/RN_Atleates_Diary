@@ -11,7 +11,7 @@ const useMyAccount = () => {
     const [units, setUnits] = useState({ ...profile.units, editable: false });
     const { loading } = profile;
 
-    const texts = useTranslates('all.submit.btn.title');
+    const texts = useTranslates('all.submit.btn.title', 'profile.myAccount.title');
     const {
         control,
         handleSubmit,

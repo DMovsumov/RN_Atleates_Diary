@@ -16,8 +16,9 @@ export const InputWrapper = styled.View`
 export const Inputs = styled.TextInput`
     width: 100%;
     height: 100%;
-    color: #fff;
+    color: ${({ theme }) => (theme === 'dark' ? '#fefefe' : '#1A1B1E')};
     font-size: 16px;
+    font-family: TTNorms-Regular;
     border-bottom-color: #c4c4c4;
     border-bottom-width: 2px;
 
@@ -35,7 +36,7 @@ export const Inputs = styled.TextInput`
 `;
 
 export const Label = styled.Text`
-    color: #fff;
+    color: ${({ theme }) => (theme === 'dark' ? '#fefefe' : '#1A1B1E')};
     font-size: 18px;
     font-family: TTNorms-Regular;
 

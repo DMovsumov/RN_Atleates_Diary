@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native';
 export const SaveArea = styled(SafeAreaView)`
     width: 100%;
     height: 100%;
-    background-color: #171824;
+    background-color: ${({ theme }) => (theme === 'dark' ? '#171824' : '#F3F5F7')};
     flex: 1;
 `;
 
@@ -19,7 +19,7 @@ export const Header = styled.View`
 `;
 
 export const TextScreen = styled.Text`
-    color: #fefefe;
+    color: ${({ theme }) => (theme === 'dark' ? '#fefefe' : '#1A1B1E')};
     font-size: 20px;
     width: 100%;
     text-align: center;
