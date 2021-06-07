@@ -110,4 +110,19 @@ export const vocabulary = {
     'all.units.ft': { en: 'Ft', ru: 'Футы' },
     'all.units.weight': { en: 'Weight:', ru: 'Вес:' },
     'all.units.height': { en: 'Height:', ru: 'Рост:' },
+    'create.choose.list.training.title': { en: 'Workout List', ru: 'Список тренировок' },
+    'create.choose.list.training.subtitle': { en: "Choose the workout that's right for you", ru: 'Выберите подходящую для вас тренировку' },
+    'create.choose.list.createProgram.title': { en: 'Main your program', ru: 'Создайте свою программу' },
+    'create.choose.list.createProgram.subtitle': {
+        en: 'You can create a program of your choice',
+        ru: 'Можете создать программу на свое усмотрение',
+    },
+    'create.choose.list.chooseProgram.title': {
+        en: 'You can create a program of your choice',
+        ru: 'Можете создать программу на свое усмотрение',
+    },
+    'create.choose.list.findProgram.title': {
+        en: 'Selection of the program according to your params',
+        ru: 'Подбор программы по вашим данным',
+    },
 };

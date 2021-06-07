@@ -4,10 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../../../screens/Home';
 import IconName from './components/IconName';
 import Programs from '../../../screens/Programs';
-import Create from '../../../screens/Create';
 import Recommendation from '../../../screens/Recommendation';
 import Profile from '../../../screens/Profile';
 import { useSelector } from 'react-redux';
+import Create from '../../../screens/Create';
 
 const Tab = createBottomTabNavigator();
 

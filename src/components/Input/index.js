@@ -1,19 +1,44 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Container, InputWrapper, Inputs, Label, IsSecure } from './styled.index';
+import { Container, InputWrapper, Inputs, Label, IsSecure, IconBlock } from './styled.index';
 import useInput from './hooks/useInput';
 import CloseEye from '../../assets/close-eye';
 import Eye from '../../assets/eye';
 import { Controller } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import Pen from '../../assets/pen';
 
-const Input = ({ type, label, keyboardType, isSecure, style, error, control, defaultValue, name, rules }) => {
+const Input = ({ type, label, keyboardType, isSecure, iconType, style, error, control, defaultValue, name, rules, placeholder }) => {
     const { secure, active, handleSecure, handleActive } = useInput();
     const { theme } = useSelector(({ global }) => global);
 
+    const renderIcon = useMemo(() => {
+        if (iconType === 'secure') {
+            return (
+                <IsSecure onPress={handleSecure}>
+                    {secure ? (
+                        <Eye color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
+                    ) : (
+                        <CloseEye color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
+                    )}
+                </IsSecure>
+            );
+        }
+
+        if (iconType === 'pen') {
+            return (
+                <IconBlock>
+                    <Pen />
+                </IconBlock>
+            );
+        }
+
+        return <></>;
+    }, [iconType, secure, theme]);
+
     return (
         <Container style={style}>
-            {label && (
+            {!!label && (
                 <Label error={error} active={active} theme={theme}>
                     {label}
                 </Label>
@@ -33,6 +58,8 @@ const Input = ({ type, label, keyboardType, isSecure, style, error, control, def
                             value={value}
                             defaultValue={defaultValue || ''}
                             secureTextEntry={isSecure ? secure : false}
+                            placeholder={placeholder || ''}
+                            placeholderTextColor={'#45475E'}
                             onFocus={handleActive}
                             onBlur={handleActive}
                         />
@@ -40,15 +67,7 @@ const Input = ({ type, label, keyboardType, isSecure, style, error, control, def
                     name={name}
                     rules={{ ...rules }}
                 />
-                {isSecure && (
-                    <IsSecure onPress={handleSecure}>
-                        {secure ? (
-                            <Eye color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
-                        ) : (
-                            <CloseEye color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
-                        )}
-                    </IsSecure>
-                )}
+                {renderIcon}
             </InputWrapper>
         </Container>
     );

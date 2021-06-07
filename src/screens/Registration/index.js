@@ -75,6 +75,7 @@ const Registration = ({ navigation }) => {
                     style={{ marginBottom: 15 }}
                     error={errors.password?.message}
                     isSecure
+                    iconType={'secure'}
                 />
                 <Touches title={allSignUpBack} onPress={goBack} />
                 <Button title={allSignUp} disabled={!enabled} onPress={handleSubmit(onSubmit)} loading={loading} />

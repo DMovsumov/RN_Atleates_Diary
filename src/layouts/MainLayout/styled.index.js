@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
-import { SafeAreaView } from 'react-native';
 
-export const SaveArea = styled(SafeAreaView)`
+export const SaveArea = styled.SafeAreaView`
     width: 100%;
     height: 100%;
     background-color: ${({ theme }) => (theme === 'dark' ? '#171824' : '#F3F5F7')};
@@ -29,4 +28,9 @@ export const TextScreen = styled.Text`
 export const WrapArrow = styled.TouchableOpacity`
     margin-right: auto;
     z-index: 10;
+`;
+
+export const RootWrapper = styled.View`
+  
+
 `;

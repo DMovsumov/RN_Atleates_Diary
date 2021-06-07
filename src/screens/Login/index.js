@@ -55,6 +55,7 @@ const Login = ({ navigation }) => {
                     }}
                     error={errors.password?.message || errors.errors?.message}
                     isSecure
+                    iconType={'secure'}
                 />
                 {errors.errors?.message && <ErrorText>{errors.errors.message}</ErrorText>}
                 <Touches title={loginForgotPassword} style={{ fontSize: 18 }} onPress={goForgotPassword} />

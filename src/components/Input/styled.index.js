@@ -22,6 +22,14 @@ export const Inputs = styled.TextInput`
     border-bottom-color: #c4c4c4;
     border-bottom-width: 2px;
 
+    ${({ type }) =>
+        type === 'programs' &&
+        css`
+            font-size: 20px;
+            line-height: 23px;
+            border-bottom-width: 0;
+        `}
+
     ${({ active }) =>
         active &&
         css`
@@ -57,4 +65,10 @@ export const IsSecure = styled.TouchableOpacity`
     color: #fefefe;
     position: absolute;
     right: 5px;
+`;
+
+export const IconBlock = styled.View`
+    color: #fefefe;
+    position: absolute;
+    right: 0px;
 `;
