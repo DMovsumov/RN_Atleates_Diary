@@ -5,17 +5,31 @@ import useWriteBlock from './hooks/useWriteBlock';
 import TextArea from '../../../../../components/TextArea';
 
 const WriteBlock = () => {
-    const { control } = useWriteBlock();
+    const { control, texts, title, description, role, author } = useWriteBlock();
+    const { writeprogramTitlePlaceholder, writeprogramAreaPlaceholder } = texts;
 
     return (
         <Wrapper>
             <BlockAuthor>
-                <TextAuthors text="@Denioo" />
-                <TextAuthors text={'user'} role />
+                <TextAuthors text={`@${author}`} />
+                <TextAuthors text={role} role={true} />
             </BlockAuthor>
             <BlockWrites>
-                <Input iconType="pen" control={control} name="title" type="programs" placeholder="Programs title" />
-                <TextArea placeholder="Enter the programs note" iconType="pen" name="area" control={control} />
+                <Input
+                    iconType="pen"
+                    control={control}
+                    name="title"
+                    type="programs"
+                    placeholder={writeprogramTitlePlaceholder}
+                    defaultValue={title}
+                />
+                <TextArea
+                    placeholder={writeprogramAreaPlaceholder}
+                    iconType="pen"
+                    name="area"
+                    control={control}
+                    defaultValue={description}
+                />
             </BlockWrites>
         </Wrapper>
     );

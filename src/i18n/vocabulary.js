@@ -125,4 +125,32 @@ export const vocabulary = {
         en: 'Selection of the program according to your params',
         ru: 'Подбор программы по вашим данным',
     },
+    'writeProgram.title.placeholder': {
+        en: 'Programs title',
+        ru: 'Название программы',
+    },
+    'writeProgram.area.placeholder': {
+        en: 'Enter the programs note',
+        ru: 'Примечание программы',
+    },
+    'writeProgram.gender.male': {
+        en: 'Male',
+        ru: 'Мужской',
+    },
+    'writeProgram.gender.female': {
+        en: 'Female',
+        ru: 'Женский',
+    },
+    'writeProgram.difficult.beginner': {
+        en: 'Beginner',
+        ru: 'Начинающий',
+    },
+    'writeProgram.difficult.intermediate': {
+        en: 'Intermediate',
+        ru: 'Средний',
+    },
+    'writeProgram.difficult.advanced': {
+        en: 'Advanced',
+        ru: 'Продвинутый',
+    },
 };

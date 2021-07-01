@@ -3,7 +3,7 @@ import { Container, TextAreaInput, IconBlock } from './styled.index';
 import { Controller } from 'react-hook-form';
 import Pen from '../../assets/pen';
 
-const TextArea = ({ placeholder, iconType, name, control, rules }) => {
+const TextArea = ({ placeholder, iconType, name, control, defaultValue, rules }) => {
     const renderIcon = useMemo(() => {
         if (iconType === 'pen') {
             return (
@@ -27,6 +27,7 @@ const TextArea = ({ placeholder, iconType, name, control, rules }) => {
                         multiline={true}
                         numberOfLines={3}
                         onChangeText={text => onChange(text)}
+                        defaultValue={defaultValue}
                         value={value}
                     />
                 )}

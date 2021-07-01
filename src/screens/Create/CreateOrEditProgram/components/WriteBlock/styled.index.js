@@ -15,6 +15,7 @@ export const BlockAuthor = styled.View`
 
 export const BlockWrites = styled.View`
     width: 100%;
+    min-height: 150px;
 `;
 
 export const TextAuthors = styled(Texts)`

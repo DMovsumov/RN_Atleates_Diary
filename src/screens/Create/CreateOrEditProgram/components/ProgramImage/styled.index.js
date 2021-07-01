@@ -21,3 +21,9 @@ export const Upload = styled.View`
     background-color: #25273f;
     padding-left: 10%;
 `;
+
+export const BackWrapper = styled.TouchableOpacity`
+    position: absolute;
+    top: ${({ top }) => top};
+    left: 10px;
+`;
