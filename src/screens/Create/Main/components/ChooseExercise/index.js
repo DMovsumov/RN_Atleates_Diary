@@ -14,7 +14,7 @@ const ChooseExercise = ({ img, title, subTitle, onPress }) => {
                 }}
                 imageStyle={styles.main}>
                 <Texts>{title}</Texts>
-                {subTitle && <Texts fs={16}>{subTitle}</Texts>}
+                {subTitle && <Texts fs={'16px'}>{subTitle}</Texts>}
             </ImageBc>
         </Wrapper>
     );

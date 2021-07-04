@@ -1,4 +1,11 @@
-import { SET_PROGRAMS_AREA, SET_PROGRAMS_DIFFICULT, SET_PROGRAMS_GENDER, SET_PROGRAMS_TITLE } from '../actions/writeProgram';
+import {
+    SET_PROGRAMS_AREA,
+    SET_PROGRAMS_DIFFICULT,
+    SET_PROGRAMS_GENDER,
+    SET_PROGRAMS_TITLE,
+    ADD_EXERCISE,
+    DELETE_EXERCISE,
+} from '../actions/writeProgram';
 
 const initialState = {
     author: {
@@ -34,6 +41,16 @@ const writeProgram = (state = initialState, action) => {
             return {
                 ...state,
                 difficult: action.payload,
+            };
+        case ADD_EXERCISE:
+            return {
+                ...state,
+                exercises: [...state.exercises, ...action.payload],
+            };
+        case DELETE_EXERCISE:
+            return {
+                ...state,
+                exercises: [...action.payload],
             };
         default:
             return state;

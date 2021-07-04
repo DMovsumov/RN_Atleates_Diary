@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
     ExerciseWrapper,
     ExerciseInfo,
@@ -15,37 +15,77 @@ import {
 } from './styled.index';
 import DeleteIcon from '../../assets/icons/delete';
 
-const ExerciseItem = ({ title, img, level, traningPlace, typeExercise, mainMuscle, muscleGroup, otherMuscles, deleteHandler, pressHandle, style }) => {
-    return (
-        <ExerciseWrapper style={style} onPress={pressHandle}>
-            <ExerciseImage source={{ uri: img.one }} />
-            <ExerciseInfo>
-                <BlockTitle>
-                    <TitleExercise numberOfLines={2} ellipsizeMode="tail">
-                        {title.ru}
-                    </TitleExercise>
-                    <LevelExercise>• {level}</LevelExercise>
-                    {deleteHandler && (
-                        <DeleteWrap>
-                            <DeleteIcon />
-                        </DeleteWrap>
-                    )}
-                </BlockTitle>
+const ExerciseItem = ({ item, deleteHandler, pressHandle, style }) => {
+    const { title, img, level, traningPlace, typeExercise, mainMuscle, muscleGroup, otherMuscles, typeExecution, values } = item;
 
-                <BlockInfo>
-                    <BlockExerciseInfo>
-                        <ExerciseInfoText>{traningPlace}</ExerciseInfoText>
-                        <ExerciseInfoText>
-                            {typeExercise} • {muscleGroup}{' '}
-                            {` •  ${(muscleGroup === mainMuscle && otherMuscles ? otherMuscles : mainMuscle) || mainMuscle}`}
-                        </ExerciseInfoText>
-                    </BlockExerciseInfo>
-                    <BlockNumbersExercise>
-                        <ExerciseTextNumber>20min</ExerciseTextNumber>
-                    </BlockNumbersExercise>
-                </BlockInfo>
-            </ExerciseInfo>
-        </ExerciseWrapper>
+    const renderExecution = useMemo(() => {
+        if (typeExecution === 'Set X Reps' || typeExecution === 'Set X Time') {
+            return (
+                <>
+                    {values?.first && values?.second ? (
+                        <BlockNumbersExercise>
+                            <ExerciseTextNumber>
+                                {values.first}x{values.second}
+                            </ExerciseTextNumber>
+                        </BlockNumbersExercise>
+                    ) : (
+                        <></>
+                    )}
+                </>
+            );
+        }
+
+        if (typeExecution === 'Times') {
+            return (
+                <>
+                    {values?.second ? (
+                        <BlockNumbersExercise>
+                            <ExerciseTextNumber>{values.second}min</ExerciseTextNumber>
+                        </BlockNumbersExercise>
+                    ) : (
+                        <></>
+                    )}
+                </>
+            );
+        }
+
+        return <></>;
+    }, [typeExecution, values]);
+
+    return (
+        <>
+            {title ? (
+                <ExerciseWrapper style={style} onPress={pressHandle}>
+                    <ExerciseImage source={{ uri: img.one }} />
+                    <ExerciseInfo>
+                        <BlockTitle>
+                            <TitleExercise numberOfLines={2} ellipsizeMode="tail">
+                                {title.ru}
+                            </TitleExercise>
+                            <LevelExercise>• {level}</LevelExercise>
+                            {deleteHandler && (
+                                <DeleteWrap onPress={deleteHandler}>
+                                    <DeleteIcon />
+                                </DeleteWrap>
+                            )}
+                        </BlockTitle>
+
+                        <BlockInfo>
+                            <BlockExerciseInfo>
+                                <ExerciseInfoText>{traningPlace}</ExerciseInfoText>
+                                <ExerciseInfoText>
+                                    {typeExercise} • {muscleGroup}{' '}
+                                    {` •  ${(muscleGroup === mainMuscle && otherMuscles ? otherMuscles : mainMuscle) || mainMuscle}`}
+                                </ExerciseInfoText>
+                            </BlockExerciseInfo>
+                            {renderExecution}
+                        </BlockInfo>
+                    </ExerciseInfo>
+                </ExerciseWrapper>
+            ) : (
+                <></>
+            )}
+        </>
     );
 };
 

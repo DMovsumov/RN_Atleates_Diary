@@ -29,3 +29,24 @@ export const setProgramsDifficult = difficult => dispatch => {
         payload: difficult,
     });
 };
+
+export const ADD_EXERCISE = 'ADD_EXERCISE';
+export const addExercise = exercise => dispatch => {
+    dispatch({
+        type: ADD_EXERCISE,
+        payload: [exercise],
+    });
+};
+
+export const DELETE_EXERCISE = 'DELETE_EXERCISE';
+export const deleteExercise = (exercises, docTitle) => dispatch => {
+    const newList = [...exercises];
+    const index = newList.findIndex(item => item.docTitle === docTitle);
+
+    newList.splice(index, 1);
+
+    dispatch({
+        type: DELETE_EXERCISE,
+        payload: newList,
+    });
+};

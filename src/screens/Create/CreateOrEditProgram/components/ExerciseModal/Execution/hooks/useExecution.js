@@ -5,20 +5,18 @@ const useExecution = pressHandle => {
     const [activeNumber, setActiveNumber] = useState('Set X Reps');
     const [values, setValues] = useState({ first: '', second: '' });
 
-    const { control, watch } = useForm({ defaultValues: { sets: '', reps: '' } });
+    const { control, watch, handleSubmit } = useForm({ defaultValues: { sets: '', reps: '' } });
     const fields = ['sets', 'reps'];
     const [sets, reps] = watch(fields);
 
     useEffect(() => {
-        if (sets || reps) {
-            setValues({ first: sets, second: reps });
-        }
+        setValues({ first: sets, second: reps });
     }, [sets, reps, setValues]);
 
-    const submitHandler = () => {
-        pressHandle({
+    const submitHandler = async ({ sets, reps }) => {
+        await pressHandle({
             typeExecution: activeNumber,
-            values,
+            values: { first: sets, second: reps },
         });
     };
 
@@ -26,7 +24,8 @@ const useExecution = pressHandle => {
         control,
         activeNumber,
         setActiveNumber,
-        submitHandler
+        handleSubmit,
+        submitHandler,
     };
 };
 

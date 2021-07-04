@@ -7,7 +7,7 @@ import Button from '../../../../../../components/Button';
 import Texts from '../../../../../../components/Texts';
 
 const Execution = ({ pressHandler, closeNumbers }) => {
-    const { control, activeNumber, setActiveNumber, submitHandler } = useExecution(pressHandler);
+    const { control, activeNumber, setActiveNumber, handleSubmit, submitHandler } = useExecution(pressHandler);
 
     const typeNumber = [
         { id: 1, item: 'Set X Reps' },
@@ -19,9 +19,9 @@ const Execution = ({ pressHandler, closeNumbers }) => {
         if (activeNumber === 'Set X Time') {
             return (
                 <BlockInput>
-                    <Input name={'sets'} label={'Sets:'} control={control} style={{ width: '30%' }} />
+                    <Input name={'sets'} label={'Sets:'} keyboardType="numeric" control={control} style={{ width: '30%' }} />
                     <Texts text="X" />
-                    <Input name={'reps'} label={'Time:'} control={control} style={{ width: '30%' }} />
+                    <Input name={'reps'} label={'Time:'} keyboardType="numeric" control={control} style={{ width: '30%' }} />
                 </BlockInput>
             );
         }
@@ -29,16 +29,16 @@ const Execution = ({ pressHandler, closeNumbers }) => {
         if (activeNumber === 'Times') {
             return (
                 <BlockInput>
-                    <Input name={'reps'} label={'Time:'} control={control} style={{ width: '30%' }} />
+                    <Input name={'reps'} label={'Time(Min):'} keyboardType="numeric" control={control} style={{ width: '40%' }} />
                 </BlockInput>
             );
         }
 
         return (
             <BlockInput>
-                <Input name={'sets'} label={'Sets:'} control={control} style={{ width: '30%' }} />
+                <Input name={'sets'} label={'Sets:'} keyboardType="numeric" control={control} style={{ width: '30%' }} />
                 <Texts text="X" />
-                <Input name={'reps'} label={'Reps:'} control={control} style={{ width: '30%' }} />
+                <Input name={'reps'} label={'Reps:'} keyboardType="numeric" control={control} style={{ width: '30%' }} />
             </BlockInput>
         );
     }, [activeNumber]);
@@ -57,7 +57,7 @@ const Execution = ({ pressHandler, closeNumbers }) => {
                     ))}
                 </BlockButton>
                 {renderInputs()}
-                <Button title={'Submit'} onPress={submitHandler} />
+                <Button title={'Submit'} onPress={handleSubmit(submitHandler)} />
             </BlockSets>
         </Wrapper>
     );

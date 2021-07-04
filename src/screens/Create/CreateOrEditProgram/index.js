@@ -13,36 +13,37 @@ import ExerciseModal from './components/ExerciseModal';
 import { genderList, difficultList } from '../../../configs/global';
 
 const CreateOrEditProgram = ({ navigation }) => {
-    const { activeDifficult, activeGender, modal, setModal, setGender, setDifficult } = useCreateOrEditProgram();
-
-    const data = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const { activeDifficult, activeGender, modal, setModal, data, handleDeleteExercise, setGender, setDifficult } =
+        useCreateOrEditProgram();
 
     return (
-        <ProgramLayout
-            HeaderComponent={() => (
-                <Wrapper>
-                    <ProgramImage navigation={navigation} />
-                    <WriteBlock />
-                    <TitleBlock>
-                        <Texts text="Exercises:" style={{ fontSize: 20 }} />
-                    </TitleBlock>
-                </Wrapper>
-            )}
-            FooterComponent={() => (
-                <Wrapper>
-                    <ExerciseModal visible={modal} showModal={() => setModal(!modal)} />
-                    <ButtonAdd addHandler={() => setModal(!modal)} />
-                    <LevelFilters filters={difficultList} title="Difficult" active={activeDifficult} setActive={setDifficult} />
-                    <LevelFilters filters={genderList} title="Gender" active={activeGender} setActive={setGender} />
-                    <ButtonSubmitWrapper>
-                        <Button title="Submit" />
-                    </ButtonSubmitWrapper>
-                </Wrapper>
-            )}
-            // data={data}
-            renderItem={({ item }) => <ExerciseItem />}
-            separator={() => <Separator />}
-        />
+        <>
+            <ProgramLayout
+                HeaderComponent={() => (
+                    <Wrapper>
+                        <ProgramImage navigation={navigation} />
+                        <WriteBlock />
+                        <TitleBlock>
+                            <Texts text="Exercises:" style={{ fontSize: 20 }} />
+                        </TitleBlock>
+                    </Wrapper>
+                )}
+                FooterComponent={() => (
+                    <Wrapper>
+                        <ButtonAdd addHandler={() => setModal(!modal)} />
+                        <LevelFilters filters={difficultList} title="Difficult" active={activeDifficult} setActive={setDifficult} />
+                        <LevelFilters filters={genderList} title="Gender" active={activeGender} setActive={setGender} />
+                        <ButtonSubmitWrapper>
+                            <Button title="Submit" />
+                        </ButtonSubmitWrapper>
+                    </Wrapper>
+                )}
+                data={data}
+                renderItem={({ item }) => <ExerciseItem item={item} deleteHandler={() => handleDeleteExercise(item.docTitle)} />}
+                separator={() => <Separator />}
+            />
+            <ExerciseModal visible={modal} showModal={() => setModal(!modal)} />
+        </>
     );
 };
 

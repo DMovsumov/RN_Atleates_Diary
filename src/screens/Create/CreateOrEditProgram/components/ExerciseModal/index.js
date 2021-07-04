@@ -58,7 +58,7 @@ const ExerciseModal = ({ visible, showModal }) => {
                 )}
                 data={exerciseList}
                 renderItem={({ item }) => (
-                    <Item {...item} pressHandle={() => handleSetSelect({ docTitle: item.docTitle, typeExercise: item.typeExercise })} />
+                    <Item item={item} pressHandle={() => handleSetSelect({ docTitle: item.docTitle, typeExercise: item.typeExercise })} />
                 )}
                 separator={() => <Separator />}
             />

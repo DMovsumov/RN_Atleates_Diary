@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFiltersExercise } from '../../../../../../redux/actions/exercises';
+import { getExercisesProgram, getFiltersExercise } from '../../../../../../redux/actions/exercises';
+import { addExercise } from '../../../../../../redux/actions/writeProgram';
 
 const useExerciseModal = () => {
     const [exerciseType, setExerciseType] = useState('');
     const [muscleGroup, setMuscleGroup] = useState('');
-    const [select, setSelect] = useState(null);
+    const [select, setSelect] = useState({});
     const [showNumbers, setShowNumbers] = useState(false);
     const dispatch = useDispatch();
 
@@ -22,9 +23,9 @@ const useExerciseModal = () => {
         setShowNumbers(true);
     };
 
-    const handleSubmitExercise = data => {
-        setSelect(prevState => ({ ...prevState, ...data }));
-        setShowNumbers(false);
+    const handleSubmitExercise = async data => {
+        await dispatch(addExercise({ ...select, ...data }));
+        await setShowNumbers(false);
     };
 
     return {

@@ -21,3 +21,18 @@ export const getFiltersExercise = (exerciseType, activeMuscle) => async dispatch
         payload: data,
     });
 };
+
+export const GET_EXERCISE_LIST_PROGRAM = 'GET_EXERCISE_LIST_PROGRAM';
+export const getExercisesProgram = exerciseList => async dispatch => {
+    const data = [];
+
+    for (let exerciseItem of exerciseList) {
+        const exercise = (await database().ref(`/Exercise/${exerciseItem.typeExercise}/${exerciseItem.docTitle}/`).once('value')).toJSON();
+        data.push({ ...exerciseItem, ...exercise });
+    }
+
+    dispatch({
+        type: GET_EXERCISE_LIST_PROGRAM,
+        payload: data,
+    });
+};
