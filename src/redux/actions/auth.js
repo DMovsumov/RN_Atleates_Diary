@@ -1,6 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
-import {GET_PROFILE, getProfile} from './profile';
+import { GET_PROFILE, getProfile } from './profile';
 
 export const CREATE_NEW_USER_WITH_EMAIL = 'CREATE_NEW_USER_WITH_EMAIL';
 export const createUserWithEmail = (email, password, name) => async dispatch => {

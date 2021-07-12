@@ -10,6 +10,7 @@ const useExerciseModal = () => {
     const [showNumbers, setShowNumbers] = useState(false);
     const dispatch = useDispatch();
 
+    const { activeDay, activeWeek } = useSelector(({ writeProgram }) => writeProgram);
     const { exerciseList } = useSelector(({ exercises }) => exercises);
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const useExerciseModal = () => {
     };
 
     const handleSubmitExercise = async data => {
-        await dispatch(addExercise({ ...select, ...data }));
+        await dispatch(addExercise({ ...select, ...data, day: activeDay, week: activeWeek }));
         await setShowNumbers(false);
     };
 

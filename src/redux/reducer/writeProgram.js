@@ -5,9 +5,15 @@ import {
     SET_PROGRAMS_TITLE,
     ADD_EXERCISE,
     DELETE_EXERCISE,
+    SET_PROGRAMS_IMAGE,
+    SET_ACTIVE_DAY,
+    SET_ACTIVE_WEEK,
+    UPDATE_EXERCISES_WEEK,
 } from '../actions/writeProgram';
 
 const initialState = {
+    activeDay: 1,
+    activeWeek: 1,
     author: {
         name: '',
         role: '',
@@ -18,10 +24,21 @@ const initialState = {
     difficult: '',
     gender: '',
     exercises: [],
+    tempImage: {},
 };
 
 const writeProgram = (state = initialState, action) => {
     switch (action.type) {
+        case SET_ACTIVE_DAY:
+            return {
+                ...state,
+                activeDay: action.payload,
+            };
+        case SET_ACTIVE_WEEK:
+            return {
+                ...state,
+                activeWeek: action.payload,
+            };
         case SET_PROGRAMS_TITLE:
             return {
                 ...state,
@@ -41,6 +58,19 @@ const writeProgram = (state = initialState, action) => {
             return {
                 ...state,
                 difficult: action.payload,
+            };
+        case SET_PROGRAMS_IMAGE:
+            return {
+                ...state,
+                img: action.payload.uri,
+                tempImage: {
+                    fileName: action.payload.fileName,
+                },
+            };
+        case UPDATE_EXERCISES_WEEK:
+            return {
+                ...state,
+                exercises: action.payload,
             };
         case ADD_EXERCISE:
             return {

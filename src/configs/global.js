@@ -11,3 +11,13 @@ export const genderList = [
     { item: 'Male', title: 'writeProgram.gender.male' },
     { item: 'Female', title: 'writeProgram.gender.female' },
 ];
+
+export const dayTitle = [
+    { en: 'Mon', ru: 'Пн' },
+    { en: 'Tue', ru: 'Вт' },
+    { en: 'Wed', ru: 'Ср' },
+    { en: 'Thu', ru: 'Чт' },
+    { en: 'Fri', ru: 'Пт' },
+    { en: 'Sat', ru: 'Сб' },
+    { en: 'Sun', ru: 'Вс' },
+];

@@ -1,8 +1,12 @@
-import { SWITCH_LANG, SWITCH_THEME } from '../actions/global';
+import { SWITCH_LANG, SWITCH_THEME, SET_MESSAGE } from '../actions/global';
 
 const initialState = {
     theme: 'dark',
     lang: 'en',
+    message: {
+        type: '',
+        text: '',
+    },
 };
 
 const global = (state = initialState, action) => {
@@ -17,6 +21,12 @@ const global = (state = initialState, action) => {
             return {
                 ...state,
                 theme: action.data,
+            };
+        }
+        case SET_MESSAGE: {
+            return {
+                ...state,
+                message: action.data,
             };
         }
         default:

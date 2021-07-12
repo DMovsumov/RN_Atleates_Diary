@@ -153,4 +153,8 @@ export const vocabulary = {
         en: 'Advanced',
         ru: 'Продвинутый',
     },
+    'writeProgram.error.fields': {
+        en: 'Fill all necessary fields',
+        ru: 'Заполните все необходимые поля',
+    },
 };

@@ -11,21 +11,47 @@ import useCreateOrEditProgram from './hooks/useCreateOrEditProgram';
 import ButtonAdd from '../../../components/ButtonAdd';
 import ExerciseModal from './components/ExerciseModal';
 import { genderList, difficultList } from '../../../configs/global';
+import Weeks from '../../../components/Weeks';
 
 const CreateOrEditProgram = ({ navigation }) => {
-    const { activeDifficult, activeGender, modal, setModal, data, handleDeleteExercise, setGender, setDifficult } =
-        useCreateOrEditProgram();
+    const {
+        activeDifficult,
+        activeGender,
+        modal,
+        setModal,
+        data,
+        img,
+        activeWeek,
+        activeDay,
+        maxWeeks,
+        deleteExerciseWeek,
+        handleDeleteExercise,
+        handleSubmitProgram,
+        setGender,
+        setDifficult,
+        handleSetActiveDay,
+        handleSetActiveWeek,
+    } = useCreateOrEditProgram();
 
     return (
         <>
             <ProgramLayout
                 HeaderComponent={() => (
                     <Wrapper>
-                        <ProgramImage navigation={navigation} />
+                        <ProgramImage navigation={navigation} img={img} />
                         <WriteBlock />
                         <TitleBlock>
                             <Texts text="Exercises:" style={{ fontSize: 20 }} />
                         </TitleBlock>
+                        <Weeks
+                            weeks={maxWeeks}
+                            activeDay={activeDay}
+                            activeWeek={activeWeek}
+                            maxWeeks={maxWeeks}
+                            setActiveDay={handleSetActiveDay}
+                            setActiveWeek={handleSetActiveWeek}
+                            deleteCallback={deleteExerciseWeek}
+                        />
                     </Wrapper>
                 )}
                 FooterComponent={() => (
@@ -34,7 +60,7 @@ const CreateOrEditProgram = ({ navigation }) => {
                         <LevelFilters filters={difficultList} title="Difficult" active={activeDifficult} setActive={setDifficult} />
                         <LevelFilters filters={genderList} title="Gender" active={activeGender} setActive={setGender} />
                         <ButtonSubmitWrapper>
-                            <Button title="Submit" />
+                            <Button title="Submit" onPress={handleSubmitProgram} />
                         </ButtonSubmitWrapper>
                     </Wrapper>
                 )}

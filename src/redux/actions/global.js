@@ -13,3 +13,11 @@ export const switchTheme = theme => dispatch => {
         data: theme,
     });
 };
+
+export const SET_MESSAGE = 'SET_MESSAGE';
+export const setMessage = error => dispatch => {
+    dispatch({
+        type: SET_MESSAGE,
+        data: error,
+    });
+};
