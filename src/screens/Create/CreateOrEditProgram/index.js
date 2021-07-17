@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper, ButtonSubmitWrapper, Separator, TitleBlock } from './styled.index';
 import ProgramImage from './components/ProgramImage';
-import WriteBlock from './components/WriteBlock';
+import Info from './components/Info';
 import ProgramLayout from '../../../layouts/ProgramLayout';
 import ExerciseItem from '../../../components/ExerciseItem';
 import LevelFilters from '../../../components/LevelFilters';
@@ -39,7 +39,7 @@ const CreateOrEditProgram = ({ navigation }) => {
                 HeaderComponent={() => (
                     <Wrapper>
                         <ProgramImage navigation={navigation} img={img} />
-                        <WriteBlock />
+                        <Info />
                         <TitleBlock>
                             <Texts text="Exercises:" style={{ fontSize: 20 }} />
                         </TitleBlock>

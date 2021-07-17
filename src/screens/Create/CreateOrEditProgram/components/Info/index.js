@@ -1,11 +1,11 @@
 import React from 'react';
 import { Wrapper, BlockAuthor, BlockWrites, TextAuthors } from './styled.index';
 import Input from '../../../../../components/Input';
-import useWriteBlock from './hooks/useWriteBlock';
+import useInfo from './hooks/useInfo';
 import TextArea from '../../../../../components/TextArea';
 
-const WriteBlock = () => {
-    const { control, texts, title, description, role, author } = useWriteBlock();
+const Info = () => {
+    const { control, texts, title, description, role, author } = useInfo();
     const { writeprogramTitlePlaceholder, writeprogramAreaPlaceholder } = texts;
 
     return (
@@ -35,4 +35,4 @@ const WriteBlock = () => {
     );
 };
 
-export default WriteBlock;
+export default Info;

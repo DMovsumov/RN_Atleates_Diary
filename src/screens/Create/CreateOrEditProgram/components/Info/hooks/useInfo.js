@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setProgramsArea, setProgramsTitle } from '../../../../../../redux/actions/writeProgram';
 import useTranslates from '../../../../../../i18n/useTranslates';
 
-const useWriteBlock = () => {
+const useInfo = () => {
     const dispatch = useDispatch();
     const writeProgram = useSelector(({ writeProgram }) => writeProgram);
     const profile = useSelector(({ profile }) => profile);
@@ -17,18 +17,20 @@ const useWriteBlock = () => {
         setValue,
         watch,
         clearErrors,
-    } = useForm();
+    } = useForm({
+        defaultValues: { title: writeProgram.title, area: writeProgram.description },
+    });
     const fields = ['title', 'area'];
     const [title, area] = watch(fields);
 
     useEffect(() => {
-        if (title) {
-            dispatch(setProgramsTitle(title));
-        }
-
-        if (area) {
-            dispatch(setProgramsArea(area));
-        }
+        // if (title) {
+        //     dispatch(setProgramsTitle(title));
+        // }
+        //
+        // if (area) {
+        //     dispatch(setProgramsArea(area));
+        // }
     }, [title, area, dispatch]);
 
     return {
@@ -41,4 +43,4 @@ const useWriteBlock = () => {
     };
 };
 
-export default useWriteBlock;
+export default useInfo;
