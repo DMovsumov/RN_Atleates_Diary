@@ -2,7 +2,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import { useDispatch } from 'react-redux';
 import { setProgramsImage } from '../../../../../../redux/actions/writeProgram';
 
-const useProgramImage = () => {
+const useImage = () => {
     const dispatch = useDispatch();
     const imagePickerHandle = async () => {
         await launchImageLibrary(
@@ -28,4 +28,4 @@ const useProgramImage = () => {
     };
 };
 
-export default useProgramImage;
+export default useImage;

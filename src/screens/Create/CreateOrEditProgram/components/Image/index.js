@@ -4,11 +4,11 @@ import { BackWrapper, ImageWrapper, Upload, Wrapper } from './styled.index';
 import UploadFile from '../../../../../assets/uploadFile';
 import ArrowBack from '../../../../../assets/arrowBack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import useProgramImage from './hooks/useProgramImage';
+import useImage from './hooks/useImage';
 
-const ProgramImage = ({ img, navigation }) => {
+const Image = ({ img, navigation }) => {
     const insets = useSafeAreaInsets();
-    const { imagePickerHandle } = useProgramImage();
+    const { imagePickerHandle } = useImage();
 
     const goBack = () => navigation.goBack();
 
@@ -28,7 +28,7 @@ const ProgramImage = ({ img, navigation }) => {
     );
 };
 
-export default ProgramImage;
+export default Image;
 
 const styles = StyleSheet.create({
     image: {

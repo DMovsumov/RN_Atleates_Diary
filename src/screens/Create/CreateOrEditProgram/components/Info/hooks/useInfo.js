@@ -24,13 +24,13 @@ const useInfo = () => {
     const [title, area] = watch(fields);
 
     useEffect(() => {
-        // if (title) {
-        //     dispatch(setProgramsTitle(title));
-        // }
-        //
-        // if (area) {
-        //     dispatch(setProgramsArea(area));
-        // }
+        if (title) {
+            dispatch(setProgramsTitle(title));
+        }
+
+        if (area) {
+            dispatch(setProgramsArea(area));
+        }
     }, [title, area, dispatch]);
 
     return {

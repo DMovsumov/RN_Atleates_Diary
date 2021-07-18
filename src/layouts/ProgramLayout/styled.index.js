@@ -9,3 +9,7 @@ export const Wrapper = styled.View`
 export const FlatListBlock = styled.FlatList`
     width: 100%;
 `;
+
+export const ScrollViewBlock = styled.ScrollView`
+
+`;
