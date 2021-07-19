@@ -34,7 +34,6 @@ export const setProgramsDifficult = difficult => dispatch => {
 
 export const SET_PROGRAMS_IMAGE = 'SET_PROGRAMS_IMAGE';
 export const setProgramsImage = image => dispatch => {
-    console.log(image);
     dispatch({
         type: SET_PROGRAMS_IMAGE,
         payload: image,

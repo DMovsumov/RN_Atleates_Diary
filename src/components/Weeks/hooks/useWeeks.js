@@ -1,13 +1,17 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useWeeks = (weeks, deleteCallback) => {
     const { lang } = useSelector(({ global }) => global);
-    const [maxWeeks, setMaxWeeks] = useState(weeks);
+    const [maxWeeks, setMaxWeeks] = useState([1]);
 
     const handleAddWeeks = () => {
         setMaxWeeks(prevState => [...prevState, prevState.length + 1]);
     };
+
+    useEffect(() => {
+        setMaxWeeks(weeks);
+    }, []);
 
     const handleDeleteWeeks = () => {
         const newWeeks = [...maxWeeks];

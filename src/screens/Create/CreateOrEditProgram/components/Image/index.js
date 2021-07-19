@@ -6,9 +6,9 @@ import ArrowBack from '../../../../../assets/arrowBack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import useImage from './hooks/useImage';
 
-const Image = ({ img, navigation }) => {
+const Image = ({ navigation }) => {
     const insets = useSafeAreaInsets();
-    const { imagePickerHandle } = useImage();
+    const { imagePickerHandle, img } = useImage();
 
     const goBack = () => navigation.goBack();
 

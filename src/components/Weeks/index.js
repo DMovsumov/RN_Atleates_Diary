@@ -19,7 +19,7 @@ const Weeks = ({ weeks, activeWeek, activeDay, setActiveDay, setActiveWeek, dele
                     />
                 ))}
                 <ItemWeek title="plus" pressHandle={handleAddWeeks} />
-                <ItemWeek title="minus" pressHandle={() => handleDeleteWeeks()} />
+                {maxWeeks.length > 1 && <ItemWeek title="minus" pressHandle={() => handleDeleteWeeks()} />}
             </ScrollBlockWrap>
             <DayBlock>
                 {dayTitle.map((item, index) => (
