@@ -17,6 +17,7 @@ const CreateOrEditProgram = ({ navigation }) => {
 
     return (
         <>
+            <ExerciseModal visible={modal} showModal={() => setModal(!modal)} />
             <ProgramLayout>
                 <Wrapper>
                     <Image navigation={navigation} />
@@ -32,7 +33,6 @@ const CreateOrEditProgram = ({ navigation }) => {
                         <Button title="Submit" onPress={handleSubmitProgram} />
                     </ButtonSubmitWrapper>
                 </Wrapper>
-                <ExerciseModal visible={modal} showModal={() => setModal(!modal)} />
             </ProgramLayout>
         </>
     );

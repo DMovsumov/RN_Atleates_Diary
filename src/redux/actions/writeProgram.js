@@ -85,16 +85,23 @@ export const setActiveWeek = week => dispatch => {
     });
 };
 
-export const submitProgram = (type, program) => async dispatch => {
+export const submitProgram = program => async dispatch => {
     try {
-        if (type === 'save') {
-            const key = await database().ref().child('AllPrograms').push().key();
-            console.log(key);
-
-            const data = {
-                id: key,
-                ...program,
-            };
-        }
-    } catch (e) {}
+        await console.log('click', program);
+        const program = await database().ref('/Programs/').push(program);
+        await console.log(program);
+        //
+        // const data = {
+        //     id: program.key,
+        //     ...program,
+        // };
+        //
+        await database()
+            .ref(`/${program.path}`)
+            .push({ id: program.key, ...program });
+        //
+        // await console.log(result)
+    } catch (e) {
+        console.log(e);
+    }
 };

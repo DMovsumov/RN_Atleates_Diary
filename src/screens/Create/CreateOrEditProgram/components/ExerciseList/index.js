@@ -15,9 +15,10 @@ const ExerciseList = () => {
 
     return (
         <Wrapper>
-            {exerciseListProgram.map((item, index) => (
-                <WrapperExerciseItem item={item} key={index + item.title.docTitle} last={index === exerciseListProgram.length - 1} />
-            ))}
+            {exerciseListProgram.length &&
+                exerciseListProgram.map((item, index) => (
+                    <WrapperExerciseItem item={item} key={index + item.title.docTitle} last={index === exerciseListProgram.length - 1} />
+                ))}
         </Wrapper>
     );
 };
