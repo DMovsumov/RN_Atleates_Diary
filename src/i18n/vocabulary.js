@@ -157,4 +157,12 @@ export const vocabulary = {
         en: 'Fill all necessary fields',
         ru: 'Заполните все необходимые поля',
     },
+    'home.welcome.title': {
+        en: 'Welcome',
+        ru: 'Добро пожаловать',
+    },
+    'home.welcome.subTitle': {
+        en: "Let's get exercise",
+        ru: 'Давайте приступим к занятиям',
+    },
 };

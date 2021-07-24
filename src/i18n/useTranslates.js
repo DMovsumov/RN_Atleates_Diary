@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 const useTranslates = (...ids) => {
     const { lang } = useSelector(({ global }) => global);
 
-    const en = 'en';
     const camelCase = input =>
         input
             .toLowerCase()
