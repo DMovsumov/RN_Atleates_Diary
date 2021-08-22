@@ -11,24 +11,21 @@ const initialState = {
 
 const global = (state = initialState, action) => {
     switch (action.type) {
-        case SWITCH_LANG: {
+        case SWITCH_LANG:
             return {
                 ...state,
                 lang: action.data,
             };
-        }
-        case SWITCH_THEME: {
+        case SWITCH_THEME:
             return {
                 ...state,
                 theme: action.data,
             };
-        }
-        case SET_MESSAGE: {
+        case SET_MESSAGE:
             return {
                 ...state,
                 message: action.data,
             };
-        }
         default:
             return state;
     }

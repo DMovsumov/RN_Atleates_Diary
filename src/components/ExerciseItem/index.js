@@ -12,10 +12,11 @@ import {
     BlockNumbersExercise,
     ExerciseTextNumber,
     DeleteWrap,
+    Separator,
 } from './styled.index';
 import DeleteIcon from '../../assets/icons/delete';
 
-const ExerciseItem = ({ item, deleteHandler, pressHandle, style }) => {
+const ExerciseItem = ({ item, deleteHandler, pressHandle, style, last }) => {
     const { title, img, level, traningPlace, typeExercise, mainMuscle, muscleGroup, otherMuscles, typeExecution, values } = item;
 
     const renderExecution = useMemo(() => {
@@ -85,6 +86,7 @@ const ExerciseItem = ({ item, deleteHandler, pressHandle, style }) => {
             ) : (
                 <></>
             )}
+            {!last && <Separator />}
         </>
     );
 };

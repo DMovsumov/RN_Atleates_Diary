@@ -8,3 +8,8 @@ export const Wrapper = styled.View`
 export const TextDate = styled(Texts)`
     font-size: 20px;
 `;
+
+export const WrapperWeek = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+`;

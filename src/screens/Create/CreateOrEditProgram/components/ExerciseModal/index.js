@@ -60,7 +60,6 @@ const ExerciseModal = ({ visible, showModal }) => {
                 renderItem={({ item }) => (
                     <Item item={item} pressHandle={() => handleSetSelect({ docTitle: item.docTitle, typeExercise: item.typeExercise })} />
                 )}
-                separator={() => <Separator />}
             />
             {showNumbers && <Execution pressHandler={handleSubmitExercise} closeNumbers={() => setShowNumbers(false)} />}
         </Modal>

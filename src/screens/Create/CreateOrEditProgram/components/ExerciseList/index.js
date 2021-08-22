@@ -1,23 +1,22 @@
 import React from 'react';
-import { Wrapper, Separator } from './styled.index';
+import { Wrapper } from './styled.index';
 import useExerciseList from './hooks/useExerciseList';
 import ExerciseItem from '../../../../../components/ExerciseItem';
 
-const WrapperExerciseItem = ({ item, last }) => (
-    <>
-        <ExerciseItem item={item} />
-        {!last && <Separator />}
-    </>
-);
-
 const ExerciseList = () => {
-    const { exerciseListProgram } = useExerciseList();
+    const { exerciseListProgram, handleDeleteExercise } = useExerciseList();
+    console.log(exerciseListProgram)
 
     return (
         <Wrapper>
-            {exerciseListProgram.length &&
+            {exerciseListProgram.length !== 0 &&
                 exerciseListProgram.map((item, index) => (
-                    <WrapperExerciseItem item={item} key={index + item.title.docTitle} last={index === exerciseListProgram.length - 1} />
+                    <ExerciseItem
+                        item={item}
+                        key={index + item.docTitle}
+                        last={index === exerciseListProgram.length - 1}
+                        deleteHandler={() => handleDeleteExercise(item.docTitle)}
+                    />
                 ))}
         </Wrapper>
     );

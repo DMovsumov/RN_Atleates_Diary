@@ -7,6 +7,7 @@ import profile from './reducer/profile';
 import global from './reducer/global';
 import writeProgram from './reducer/writeProgram';
 import exercises from './reducer/exercises';
+import home from './reducer/home';
 
 const rootReducer = combineReducers({
     auth,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     global,
     writeProgram,
     exercises,
+    home,
 });
 
 export default createStore(rootReducer, applyMiddleware(thunk, dataService, callbackService));

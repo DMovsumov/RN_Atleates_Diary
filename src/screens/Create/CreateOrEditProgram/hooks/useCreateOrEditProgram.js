@@ -13,6 +13,8 @@ const useCreateOrEditProgram = () => {
     const [modal, setModal] = useState(false);
     const { validation, typeProgram } = useValidationProgram();
 
+    console.log(exercises)
+
     const handleSubmitProgram = async () => {
         const result = await validation({ title, description, difficult, gender, exercises });
 

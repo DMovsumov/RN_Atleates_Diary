@@ -19,6 +19,7 @@ import Arm from '../../assets/programIcons/arm';
 import Chest from '../../assets/programIcons/chest';
 import Legs from '../../assets/programIcons/legs';
 import Shoulders from '../../assets/programIcons/shoulders';
+import Information from '../../assets/icons/information';
 
 const ItemIcons = ({ iconName, color }) => {
     const { theme } = useSelector(({ global }) => global);
@@ -98,6 +99,10 @@ const ItemIcons = ({ iconName, color }) => {
 
     if (iconName === 'Shoulders') {
         return <Shoulders color={colorTheme} />;
+    }
+
+    if (iconName === 'Information') {
+        return <Information color={colorTheme} />;
     }
 
     return <></>;

@@ -3,11 +3,11 @@ import { TextsBlock } from './styled.index';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Texts = ({ children, text, style }) => {
+const Texts = ({ children, text, style, numberOfLines }) => {
     const { theme } = useSelector(({ global }) => global);
 
     return (
-        <TextsBlock style={style} theme={theme}>
+        <TextsBlock style={style} theme={theme} numberOfLines={numberOfLines || 0} ellipsizeMode="tail">
             {children || text}
         </TextsBlock>
     );

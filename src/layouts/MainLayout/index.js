@@ -4,8 +4,8 @@ import { ScrollView, RefreshControl } from 'react-native';
 import Arrow from '../../assets/arrow';
 import { useSelector } from 'react-redux';
 
-const MainLayout = ({ children, navigation, back, title, refresh }) => {
-    const goBack = () => navigation.goBack();
+const MainLayout = ({ children, navigation, back, title, backHandle, refresh }) => {
+    const goBack = () => (backHandle ? backHandle() : navigation.goBack());
     const [refreshing, setRefreshing] = useState(false);
     const { theme } = useSelector(({ global }) => global);
 
@@ -17,6 +17,14 @@ const MainLayout = ({ children, navigation, back, title, refresh }) => {
 
     return (
         <SaveArea theme={theme}>
+            {back && (
+                <Header>
+                    <WrapArrow onPress={goBack}>
+                        <Arrow color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
+                    </WrapArrow>
+                    <TextScreen theme={theme}>{title}</TextScreen>
+                </Header>
+            )}
             <ScrollView
                 contentContainerStyle={{ flexGrow: 1 }}
                 refreshControl={
@@ -28,17 +36,7 @@ const MainLayout = ({ children, navigation, back, title, refresh }) => {
                         onRefresh={onRefresh}
                     />
                 }>
-                <RootWrapper>
-                    {back && (
-                        <Header>
-                            <WrapArrow onPress={goBack}>
-                                <Arrow color={theme === 'dark' ? '#fefefe' : '#1A1B1E'} />
-                            </WrapArrow>
-                            <TextScreen theme={theme}>{title}</TextScreen>
-                        </Header>
-                    )}
-                    {children}
-                </RootWrapper>
+                <RootWrapper>{children}</RootWrapper>
             </ScrollView>
         </SaveArea>
     );

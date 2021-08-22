@@ -31,6 +31,5 @@ export const WrapArrow = styled.TouchableOpacity`
 `;
 
 export const RootWrapper = styled.View`
-  
-
+    height: 100%;
 `;
