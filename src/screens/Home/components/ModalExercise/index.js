@@ -7,20 +7,27 @@ import Carousel from '../../../../components/Carousel';
 import ExerciseDropDown from './DropDown';
 import WriteBlockInfo from './WriteBlockInfo';
 
-const ModalExercise = ({ visible, showModal, exercise, index }) => {
-    const { time } = useModalExercise();
-    const { typeExecution, values, docTitle } = exercise;
+const ModalExercise = ({ visible, showModal, exercise }) => {
+    const { time, infoTraining, handleChange, addValueTrainings, deleteValueTrainings, handleCloseModal } = useModalExercise(
+        exercise,
+        showModal,
+    );
 
     return (
         <Modal visible={visible} animationType="slide">
-            <MainLayout back title={time} backHandle={showModal}>
+            <MainLayout back title={time} backHandle={handleCloseModal}>
                 <Wrapper>
                     <Carousel />
                     <WrapperContent>
                         <ExerciseDropDown exercise={exercise} />
                     </WrapperContent>
                     <WrapperContent>
-                        <WriteBlockInfo info={{ typeExecution, values, docTitle, index }} />
+                        <WriteBlockInfo
+                            info={infoTraining}
+                            addValue={addValueTrainings}
+                            deleteValue={deleteValueTrainings}
+                            handleChange={handleChange}
+                        />
                     </WrapperContent>
                 </Wrapper>
             </MainLayout>

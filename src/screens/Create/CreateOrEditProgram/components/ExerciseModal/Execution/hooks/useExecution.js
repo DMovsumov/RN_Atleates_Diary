@@ -13,22 +13,12 @@ const useExecution = pressHandle => {
     useEffect(() => {
         setValues({ first: sets, second: reps });
 
-        if (activeNumber === 'Set X Reps' && sets) {
+        if ((activeNumber === 'Set X Reps' || activeNumber === 'Set X Time') && sets) {
             const array = [];
 
             for (let i = 0; i < sets; i++) {
-                array.push({ reps, weight: '' });
+                array.push({ reps, value: '' });
             }
-            return setDataTraining(array);
-        }
-
-        if (activeNumber === 'Set X Time' && sets) {
-            const array = [];
-
-            for (let i = 0; i < sets; i++) {
-                array.push({ reps, times: '' });
-            }
-
             return setDataTraining(array);
         }
 

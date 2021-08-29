@@ -9,6 +9,11 @@ export const WrapperBlock = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #383c4c;
+    padding: 10px 5px;
+    margin-bottom: 10px;
 `;
 
 export const ButtonWrapper = styled.TouchableOpacity`

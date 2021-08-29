@@ -1,4 +1,4 @@
-import { GET_DATA_DIARY, GET_EXERCISE_ACTIVE_LIST_PROGRAM, SET_TIMER } from '../actions/home';
+import { GET_DATA_DIARY, GET_EXERCISE_ACTIVE_LIST_PROGRAM, SET_TIMER, SET_NEW_EXERCISE_LIST } from '../actions/home';
 
 const initialState = {
     program: {
@@ -26,6 +26,11 @@ const home = (state = initialState, action) => {
             return {
                 ...state,
                 timer: action.payload,
+            };
+        case SET_NEW_EXERCISE_LIST:
+            return {
+                ...state,
+                exerciseList: [...action.payload],
             };
         default:
             return state;

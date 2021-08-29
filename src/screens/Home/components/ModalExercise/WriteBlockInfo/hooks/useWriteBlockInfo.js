@@ -1,10 +1,8 @@
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
-const useWriteBlockInfo = (info) => {
-    const { control, watch, handleSubmit } = useForm({ defaultValues: { sets: '', reps: '' } });
+const useWriteBlockInfo = () => {
 
     return {
-        control,
     };
 };
 

@@ -9,7 +9,6 @@ const useHome = () => {
         program: { id, author, img },
     } = useSelector(({ home }) => home);
     const [modal, showModal] = useState(false);
-    const [index, setActiveIndex] = useState(null);
     const [exercise, setExercise] = useState({
         title: '',
         descArea: '',
@@ -25,16 +24,14 @@ const useHome = () => {
         dispatch(getDataDiary(uid));
     }, []);
 
-    const handleShowModal = async (exercise, index) => {
+    const handleShowModal = async exercise => {
         await setExercise(exercise);
-        await setActiveIndex(index);
         await showModal(prevState => !prevState);
     };
 
     return {
         modal,
         exercise,
-        index,
         handleShowModal,
         closeModal: () => showModal(prevState => !prevState),
     };

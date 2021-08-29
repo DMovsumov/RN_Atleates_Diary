@@ -10,7 +10,7 @@ const DescInstruction = ({ desc }) => {
     return (
         <Wrapper>
             {desc.map((item, index) => (
-                <Item key={item.en} last={index === desc.length - 1}>
+                <Item key={item.en + index} last={index === desc.length - 1}>
                     <IndexWrap>
                         <Texts style={{ fontSize: 20 }}>{index + 1}</Texts>
                     </IndexWrap>

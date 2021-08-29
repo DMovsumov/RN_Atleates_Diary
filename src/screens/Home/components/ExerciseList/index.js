@@ -12,7 +12,7 @@ const ExerciseList = ({ showModal }) => {
                 exerciseList.map((item, index) => (
                     <ExerciseItem
                         key={index + item.docTitle}
-                        pressHandle={() => showModal(item, index)}
+                        pressHandle={() => showModal(item)}
                         item={item}
                         last={index === exerciseList.length - 1}
                     />
