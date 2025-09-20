@@ -1,4 +1,4 @@
-# RN_Atleates_Diary
+# RN_Atleates_Diary - Курсовая работа 
 
 ## Инструкция по запуску приложения
 
